@@ -614,7 +614,7 @@ function crbRegisterFields($args) {
                     ->add_fields( array(
                         Field::make( 'file', 'file2', 'Bestand2' ),
                         Field::make( 'text', 'name2', 'Titel2' ),
-                    ) )
+                    ) ),
                 ) )
 
                 // // Third group will be a list of manually selected posts
