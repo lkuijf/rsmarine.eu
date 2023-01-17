@@ -387,7 +387,7 @@ class PagesController extends Controller
                     // $s['margin'] = $sec->margin;
                     // $s['valign_center'] = $sec->vertical_align_center;
                     // $s['orientation'] = $sec->orientation;
-                    $s['background_color'] = $sec->background_color;
+                    // $s['background_color'] = $sec->background_color;
                     $s['text'] = $sec->text;
                     // $img = str_replace('_mcfu638b-cms/wp-content/uploads', 'media', $sec->image);
                     // $s['img']['url'] = $img;

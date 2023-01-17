@@ -19,7 +19,7 @@
             // 'bl' => $section['bl_header'],
             // 'vAlign' => $section['valign_center'],
             'text' => $section['text'],
-            'bg_color' => $section['background_color'],
+            // 'bg_color' => $section['background_color'],
             // 'orientation' => $section['orientation'],
             // 'margin' => $section['margin'],
             ])
