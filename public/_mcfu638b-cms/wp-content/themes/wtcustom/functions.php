@@ -28,6 +28,9 @@ $websiteOptions[] = array('text', 'form_error', 'Formulier error melding');
 // $websiteOptions[] = array('rich_text', 'footer_tekst', 'Footer tekst');
 // $websiteOptions[] = array('rich_text', 'wt_website_footer2', 'Footer blok 2 tekst');
 // $websiteOptions[] = array('file', 'wt_algemene_voorwaarden', 'Algemene voorwaarden');
+$websiteOptions[] = array('image', 'banner_image', 'Banner afbeelding');
+$websiteOptions[] = array('text', 'banner_title', 'Banner Titel');
+$websiteOptions[] = array('text', 'banner_sub', 'Banner Sub-titel');
 $carbonFieldsArgs['websiteOptions'] = $websiteOptions;
 
 // add_action( 'init', 'create_posttype_staff' );
@@ -311,7 +314,7 @@ function crbRegisterFields($args) {
                 //     // Field::make( 'rich_text', 'text', 'Tekst' ),
                 // ) )
                 // ->add_fields( 'banner', 'Banner', array(
-                //     Field::make( 'image', 'image', 'Afbeelding' ),
+                    // Field::make( 'image', 'image', 'Afbeelding' ),
                 //     Field::make( 'select', 'image_opacity', __( 'Choose image transparancy' ) )
                 //         ->set_options( array(
                 //             'none' => __( 'None' ),
@@ -319,8 +322,8 @@ function crbRegisterFields($args) {
                 //             'white' => __( 'White transparancy' ),
                 //         ) ),
                 //     Field::make( 'checkbox', 'extra_padding', __( 'Add extra padding' ) ),
-                //     // Field::make( 'text', 'writing_letters_header', __( 'Writing letters header (gold)' ) ),
-                //     // Field::make( 'text', 'block_letters_header', __( 'Block letters header' ) ),
+                // Field::make( 'text', 'banner_title', __( 'Banner title' ) ),
+                // Field::make( 'text', 'banner_sub', __( 'Banner sub-text' ) ),
                 //     Field::make( 'rich_text', 'text', 'Tekst (on top of image)' ),
                 //     Field::make( 'select', 'text_align', __( 'Choose text alignment' ) )
                 //         ->set_options( array(
