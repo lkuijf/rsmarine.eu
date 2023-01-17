@@ -606,9 +606,10 @@ function crbRegisterFields($args) {
                 // ) )
                 
                 ->add_fields( 'file_list', 'Downloads', array(
-                    Field::make( 'complex', 'files', 'Files' )
+                    Field::make( 'complex', 'files', 'Downloads' )
                         ->add_fields( array(
-                            Field::make( 'file', 'file', 'File' ),
+                            Field::make( 'file', 'file', 'Bestand' ),
+                            Field::make( 'text', 'name', 'Titel' ),
                         ) ),
                 ) )
 
