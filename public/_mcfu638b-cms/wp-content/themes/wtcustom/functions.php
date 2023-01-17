@@ -627,8 +627,8 @@ function crbRegisterFields($args) {
                             Field::make( 'file', 'file', 'Bestand' ),
                             Field::make( 'text', 'title', 'Titel' ),
                         ) )
-                        ->add_fields('nieuws', array(
-                            Field::make( 'association', 'colleague_associations', __( 'Select colleagues' ))
+                        ->add_fields('nieuws-items', array(
+                            Field::make( 'association', 'news_associations', __( 'Select news items' ))
                             ->set_types( array(
                                 array(
                                     'type' => 'post',
@@ -651,6 +651,15 @@ function crbRegisterFields($args) {
                         ->add_fields('bestand', array(
                             Field::make( 'file', 'file', 'Bestand' ),
                             Field::make( 'text', 'title', 'Titel' ),
+                        ) )
+                        ->add_fields('nieuws-items', array(
+                            Field::make( 'association', 'news_associations', __( 'Select news items' ))
+                            ->set_types( array(
+                                array(
+                                    'type' => 'post',
+                                    'post_type' => 'news',
+                                ),
+                            ) )
                         ) ),
 
                     Field::make( 'complex', 'right', 'Rechter kolom' )
@@ -661,7 +670,15 @@ function crbRegisterFields($args) {
                             Field::make( 'file', 'file', 'Bestand' ),
                             Field::make( 'text', 'title', 'Titel' ),
                         ) )
-
+                        ->add_fields('nieuws-items', array(
+                            Field::make( 'association', 'news_associations', __( 'Select news items' ))
+                            ->set_types( array(
+                                array(
+                                    'type' => 'post',
+                                    'post_type' => 'news',
+                                ),
+                            ) )
+                        ) )
                 ) )
 
                 // // Third group will be a list of manually selected posts
