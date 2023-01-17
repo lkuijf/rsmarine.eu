@@ -628,10 +628,10 @@ function crbRegisterFields($args) {
                         ) ),
 
                     Field::make( 'complex', 'right', 'Rechter kolom' )
-                        ->add_fields('Tekst', array(
+                        ->add_fields('Tekst2', array(
                             Field::make( 'rich_text', 'text_right', 'Tekst' ),
                         ) )
-                        ->add_fields('Bestand', array(
+                        ->add_fields('Bestand2', array(
                             Field::make( 'file', 'file_right', 'Bestand' ),
                         ) )
 
