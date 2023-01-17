@@ -33,7 +33,7 @@ $websiteOptions[] = array('text', 'header_title', 'Header Titel');
 $websiteOptions[] = array('text', 'header_sub', 'Header Sub-titel');
 $carbonFieldsArgs['websiteOptions'] = $websiteOptions;
 
-// add_action( 'init', 'create_posttype_staff' );
+add_action( 'init', 'create_posttype_news' );
 // add_action( 'init', 'create_posttype_job_offer' );
 // add_action( 'init', 'create_posttype_interview' );
 // add_action( 'init', 'register_taxonomy_job_cat' );
@@ -42,26 +42,26 @@ $carbonFieldsArgs['websiteOptions'] = $websiteOptions;
 // add_action( 'init', 'register_taxonomy_locatie' );
 
 // Our custom post type function
-// function create_posttype_staff() {
-//     register_post_type( 'staff',
-//         array(
-//             'labels' => array(
-//                 'name' => __( 'Colleagues' ),
-//                 'singular_name' => __( 'Colleague' ),
-//                 'add_new_item' => __( 'Add New Colleague' ),
-//                 'add_new' => __( 'Add New Colleague' ),
-//                 'edit_item' => __( 'Edit Colleague' ),
-//                 'update_item' => __( 'Update Colleague' ),
-//             ),
-//             'public' => true,
-//             // 'has_archive' => true,
-//             // 'rewrite' => array('slug' => 'movies'),
-//             'show_in_rest' => true,
-//             // 'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-//             'supports'            => array( 'title'),
-//             )
-//     );
-// }
+function create_posttype_news() {
+    register_post_type( 'news',
+        array(
+            'labels' => array(
+                'name' => __( 'News' ),
+                'singular_name' => __( 'News' ),
+                'add_new_item' => __( 'Add New News-item' ),
+                'add_new' => __( 'Add New News-item' ),
+                'edit_item' => __( 'Edit News-item' ),
+                'update_item' => __( 'Update News-item' ),
+            ),
+            'public' => true,
+            // 'has_archive' => true,
+            // 'rewrite' => array('slug' => 'movies'),
+            'show_in_rest' => true,
+            // 'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+            'supports'            => array( 'title'),
+            )
+    );
+}
 // function create_posttype_job_offer() {
 //     register_post_type( 'job_offer',
 //         array(
@@ -617,7 +617,7 @@ function crbRegisterFields($args) {
                     ) )
                 ) )
 
-                ->add_fields( '1column', '1 kolom', array(
+                ->add_fields( '1column', 'Content', array(
 
                     Field::make( 'complex', 'left', 'Content' )
                         ->add_fields('tekst', array(
@@ -630,7 +630,7 @@ function crbRegisterFields($args) {
 
                 ) )
 
-                ->add_fields( '2column', '2 kolommen', array(
+                ->add_fields( '2column', 'Content (2 kolommen)', array(
 
                     Field::make( 'complex', 'left', 'Linker kolom' )
                         ->add_fields('tekst', array(
@@ -669,17 +669,17 @@ function crbRegisterFields($args) {
     //     ->where( 'post_type', '=', 'page' )
     //     // ->where( 'post_template', '=', 'template-section-based.php' )
     //     ->add_fields( array(Field::make( 'text', 'crb_alt_url', __( 'Alternative URL' ))) );
-    // Container::make( 'post_meta', __( 'Information' ) )
-    //     ->where( 'post_type', '=', 'staff' )
-    //     // ->where( 'post_template', '=', 'template-section-based.php' )
-    //     ->add_fields(array(
-    //             Field::make( 'text', 'function', __( 'Function' ))->set_visible_in_rest_api($visible = true),
-    //             Field::make( 'rich_text', 'text', __( 'Text' ))->set_visible_in_rest_api($visible = true),
-    //             // Field::make( 'text', 'board_email', __( 'E-mail' ))->set_visible_in_rest_api($visible = true),
-    //             // Field::make( 'text', 'board_phone', __( 'Phone' ))->set_visible_in_rest_api($visible = true),
-    //             Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
-    //         )
-    //     );
+    Container::make( 'post_meta', __( 'Information' ) )
+        ->where( 'post_type', '=', 'news' )
+        // ->where( 'post_template', '=', 'template-section-based.php' )
+        ->add_fields(array(
+                Field::make( 'text', 'function', __( 'Function' ))->set_visible_in_rest_api($visible = true),
+                Field::make( 'rich_text', 'text', __( 'Text' ))->set_visible_in_rest_api($visible = true),
+                // Field::make( 'text', 'board_email', __( 'E-mail' ))->set_visible_in_rest_api($visible = true),
+                // Field::make( 'text', 'board_phone', __( 'Phone' ))->set_visible_in_rest_api($visible = true),
+                Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
+            )
+        );
     // Container::make( 'post_meta', __( 'Information' ) )
     //     ->where( 'post_type', '=', 'job_offer' )
     //     // ->where( 'post_template', '=', 'template-section-based.php' )
