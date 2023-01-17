@@ -28,9 +28,9 @@ $websiteOptions[] = array('text', 'form_error', 'Formulier error melding');
 // $websiteOptions[] = array('rich_text', 'footer_tekst', 'Footer tekst');
 // $websiteOptions[] = array('rich_text', 'wt_website_footer2', 'Footer blok 2 tekst');
 // $websiteOptions[] = array('file', 'wt_algemene_voorwaarden', 'Algemene voorwaarden');
-$websiteOptions[] = array('image', 'banner_image', 'Banner afbeelding');
-$websiteOptions[] = array('text', 'banner_title', 'Banner Titel');
-$websiteOptions[] = array('text', 'banner_sub', 'Banner Sub-titel');
+$websiteOptions[] = array('image', 'header_image', 'Header afbeelding');
+$websiteOptions[] = array('text', 'header_title', 'Header Titel');
+$websiteOptions[] = array('text', 'header_sub', 'Header Sub-titel');
 $carbonFieldsArgs['websiteOptions'] = $websiteOptions;
 
 // add_action( 'init', 'create_posttype_staff' );
@@ -402,9 +402,9 @@ function crbRegisterFields($args) {
                         // ->set_type( array( 'image', ) ),
                         // ->set_value_type( 'url' ),
                 ) )
-                // ->add_fields( 'text_flex', 'Tekst (2-column)', array(
+                ->add_fields( 'text_flex', 'Tekst (2-column)', array(
                 //     Field::make( 'text', 'header', __( 'Header' ) ),
-                //     Field::make( 'rich_text', 'text_left', 'Text left' ),
+                    Field::make( 'rich_text', 'text_left', 'Text left' ),
                 //     Field::make( 'complex', 'links_left', __( 'Add links' ) )
                 //         ->add_fields( array(
                 //             Field::make( 'text', 'button_text', __( 'Button text' ) ),
@@ -424,7 +424,7 @@ function crbRegisterFields($args) {
                 //             Field::make( 'text', 'custom_link', __( 'Custom button link' ) ),
                 //         )),
 
-                //     Field::make( 'rich_text', 'text_right', 'Text right' ),
+                    Field::make( 'rich_text', 'text_right', 'Text right' ),
                 //     Field::make( 'complex', 'links_right', __( 'Add links' ) )
                 //         ->add_fields( array(
                 //             Field::make( 'text', 'button_text', __( 'Button text' ) ),
@@ -455,7 +455,7 @@ function crbRegisterFields($args) {
                 //             'left' => __( 'Left column wider' ),
                 //             'right' => __( 'Right column wider' ),
                 //         ) ),
-                // ) )
+                ) )
                 // ->add_fields( 'text_grid', 'Tekst (grid)', array(
                 //     Field::make( 'complex', 'crb_media_item' )
                 //         ->add_fields( 'text', array(
