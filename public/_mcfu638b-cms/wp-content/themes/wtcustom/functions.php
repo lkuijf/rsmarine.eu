@@ -605,12 +605,12 @@ function crbRegisterFields($args) {
                 //         )),
                 // ) )
                 
-                // ->add_fields( 'file_list', 'File List', array(
-                //     Field::make( 'complex', 'files', 'Files' )
-                //         ->add_fields( array(
-                //             Field::make( 'file', 'file', 'File' ),
-                //         ) ),
-                // ) )
+                ->add_fields( 'file_list', 'Downloads', array(
+                    Field::make( 'complex', 'files', 'Files' )
+                        ->add_fields( array(
+                            Field::make( 'file', 'file', 'File' ),
+                        ) ),
+                ) )
 
                 // // Third group will be a list of manually selected posts
                 // // used as a simple curated "Related posts" listing
