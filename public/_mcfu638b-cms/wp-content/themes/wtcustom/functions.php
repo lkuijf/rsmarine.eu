@@ -673,11 +673,12 @@ function crbRegisterFields($args) {
         ->where( 'post_type', '=', 'news' )
         // ->where( 'post_template', '=', 'template-section-based.php' )
         ->add_fields(array(
-                Field::make( 'text', 'function', __( 'Function' ))->set_visible_in_rest_api($visible = true),
-                Field::make( 'rich_text', 'text', __( 'Text' ))->set_visible_in_rest_api($visible = true),
-                // Field::make( 'text', 'board_email', __( 'E-mail' ))->set_visible_in_rest_api($visible = true),
-                // Field::make( 'text', 'board_phone', __( 'Phone' ))->set_visible_in_rest_api($visible = true),
-                Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
+            Field::make( 'text', 'site_title', __( 'Site title' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'text', 'news_url', __( 'News url' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'rich_text', 'text', __( 'Text' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
+            // Field::make( 'text', 'board_email', __( 'E-mail' ))->set_visible_in_rest_api($visible = true),
+            // Field::make( 'text', 'board_phone', __( 'Phone' ))->set_visible_in_rest_api($visible = true),
             )
         );
     // Container::make( 'post_meta', __( 'Information' ) )
