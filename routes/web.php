@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\SubmitController;
+// use App\Http\Controllers\AjaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [PagesController::class, 'showPage'])->defaults('section', 'homepage')->defaults('page', false)->defaults('subpage', false);
+
+
+/* Than check for a page request */
+Route::get('/{section}', [PagesController::class, 'showPage'])->defaults('page', false)->defaults('subpage', false)->where([
+    'section' => '[a-z0-9_-]+',
+]);
+Route::get('/{section}/{page}', [PagesController::class, 'showPage'])->defaults('subpage', false)->where([
+    'section' => '[a-z0-9_-]+',
+    'page' => '[a-z0-9_-]+',
+]);
+Route::get('/{section}/{page}/{subpage}', [PagesController::class, 'showPage'])->where([
+    'section' => '[a-z0-9_-]+',
+    'page' => '[a-z0-9_-]+',
+    'subpage' => '[a-z0-9_-]+',
+]);

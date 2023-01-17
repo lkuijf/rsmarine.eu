@@ -5,8 +5,8 @@ use Carbon_Fields\Container;
 require('inc/func.inc.php');
 require('inc/endpoints.inc.php');
 require('inc/callbacks.inc.php');
-require('inc/filterproducts.inc.php');
-require('inc/filter-job-offers.inc.php');
+// require('inc/filterproducts.inc.php');
+// require('inc/filter-job-offers.inc.php');
 
 $editorCanAddAndRemovePages = true; // !!! may take 2 reloads for changes to take effect !!!
 $editorCanAddAndRemovePosts = true; // !!! may take 2 reloads for changes to take effect !!!
@@ -19,186 +19,186 @@ $websiteOptions[] = array('text', 'linkedin', 'LinkedIn link');
 $websiteOptions[] = array('text', 'instagram', 'Instagram link');
 $websiteOptions[] = array('text', 'form_success', 'Formulier succes melding');
 $websiteOptions[] = array('text', 'form_error', 'Formulier error melding');
-$websiteOptions[] = array('text', 'apply_success', 'Sollicitatie succes melding');
-$websiteOptions[] = array('text', 'apply_error', 'Sollicitatie error melding');
-$websiteOptions[] = array('rich_text', 'footer_menu', 'Footer menu');
-$websiteOptions[] = array('rich_text', 'inlog_menu', 'Inlog menu (in header and footer)');
+// $websiteOptions[] = array('text', 'apply_success', 'Sollicitatie succes melding');
+// $websiteOptions[] = array('text', 'apply_error', 'Sollicitatie error melding');
+// $websiteOptions[] = array('rich_text', 'footer_menu', 'Footer menu');
+// $websiteOptions[] = array('rich_text', 'inlog_menu', 'Inlog menu (in header and footer)');
 // $websiteOptions[] = array('text', 'wt_website_text4', 'Website text 4');
 // $websiteOptions[] = array('textarea', 'wt_website_textarea1', 'Website textarea 1');
-$websiteOptions[] = array('rich_text', 'footer_tekst', 'Footer tekst');
+// $websiteOptions[] = array('rich_text', 'footer_tekst', 'Footer tekst');
 // $websiteOptions[] = array('rich_text', 'wt_website_footer2', 'Footer blok 2 tekst');
 // $websiteOptions[] = array('file', 'wt_algemene_voorwaarden', 'Algemene voorwaarden');
 $carbonFieldsArgs['websiteOptions'] = $websiteOptions;
 
-add_action( 'init', 'create_posttype_staff' );
-add_action( 'init', 'create_posttype_job_offer' );
-add_action( 'init', 'create_posttype_interview' );
-add_action( 'init', 'register_taxonomy_job_cat' );
-add_action( 'init', 'register_taxonomy_uren_per_week' );
-add_action( 'init', 'register_taxonomy_type_job' );
-add_action( 'init', 'register_taxonomy_locatie' );
+// add_action( 'init', 'create_posttype_staff' );
+// add_action( 'init', 'create_posttype_job_offer' );
+// add_action( 'init', 'create_posttype_interview' );
+// add_action( 'init', 'register_taxonomy_job_cat' );
+// add_action( 'init', 'register_taxonomy_uren_per_week' );
+// add_action( 'init', 'register_taxonomy_type_job' );
+// add_action( 'init', 'register_taxonomy_locatie' );
 
 // Our custom post type function
-function create_posttype_staff() {
-    register_post_type( 'staff',
-        array(
-            'labels' => array(
-                'name' => __( 'Colleagues' ),
-                'singular_name' => __( 'Colleague' ),
-                'add_new_item' => __( 'Add New Colleague' ),
-                'add_new' => __( 'Add New Colleague' ),
-                'edit_item' => __( 'Edit Colleague' ),
-                'update_item' => __( 'Update Colleague' ),
-            ),
-            'public' => true,
-            // 'has_archive' => true,
-            // 'rewrite' => array('slug' => 'movies'),
-            'show_in_rest' => true,
-            // 'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-            'supports'            => array( 'title'),
-            )
-    );
-}
-function create_posttype_job_offer() {
-    register_post_type( 'job_offer',
-        array(
-            'labels' => array(
-                'name' => __( 'Job offers' ),
-                'singular_name' => __( 'Job offer' ),
-                'add_new_item' => __( 'Add New Job offer' ),
-                'add_new' => __( 'Add New Job offer' ),
-                'edit_item' => __( 'Edit Job offer' ),
-                'update_item' => __( 'Update Job offer' ),
-            ),
-            'public' => true,
-            // 'has_archive' => true,
-            // 'rewrite' => array('slug' => 'movies'),
-            'show_in_rest' => true,
-            // 'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-            'supports'            => array( 'title'),
-            )
-    );
-}
-function create_posttype_interview() {
-    register_post_type( 'interview',
-        array(
-            'labels' => array(
-                'name' => __( 'Interviews' ),
-                'singular_name' => __( 'Interview' ),
-                'add_new_item' => __( 'Add New Interview' ),
-                'add_new' => __( 'Add New Interview' ),
-                'edit_item' => __( 'Edit Interview' ),
-                'update_item' => __( 'Update Interview' ),
-            ),
-            'public' => true,
-            // 'has_archive' => true,
-            // 'rewrite' => array('slug' => 'movies'),
-            'show_in_rest' => true,
-            // 'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-            'supports'            => array( 'title'),
-            )
-    );
-}
-function register_taxonomy_job_cat() {
-    $labels = array(
-        'name'              => _x( 'Categories', 'taxonomy general name' ),
-        'singular_name'     => _x( 'Category', 'taxonomy singular name' ),
-        'search_items'      => __( 'Search Categories' ),
-        'all_items'         => __( 'All Categories' ),
-        'parent_item'       => __( 'Parent Category' ),
-        'parent_item_colon' => __( 'Parent Category:' ),
-        'edit_item'         => __( 'Edit Category' ),
-        'update_item'       => __( 'Update Category' ),
-        'add_new_item'      => __( 'Add New Category' ),
-        'new_item_name'     => __( 'New Category Name' ),
-        'menu_name'         => __( 'Category' ),
-    );
-    $args   = array(
-        'hierarchical'      => true, // make it hierarchical (like categories)
-        'labels'            => $labels,
-        'show_ui'           => true,
-        'show_admin_column' => true,
-        'show_in_rest'      => true,
-        'query_var'         => true,
-        'rewrite'           => [ 'slug' => 'job_cat' ],
-    );
-    register_taxonomy( 'job_cat', [ 'job_offer' ], $args );
-}
-function register_taxonomy_uren_per_week() {
-    $labels = array(
-        'name'              => _x( 'Uren per week', 'taxonomy general name' ),
-        'singular_name'     => _x( 'Uren per week', 'taxonomy singular name' ),
-        'search_items'      => __( 'Search Uren per week' ),
-        'all_items'         => __( 'All Uren per week' ),
-        'parent_item'       => __( 'Parent Uren per week' ),
-        'parent_item_colon' => __( 'Parent Uren per week:' ),
-        'edit_item'         => __( 'Edit Uren per week' ),
-        'update_item'       => __( 'Update Uren per week' ),
-        'add_new_item'      => __( 'Add New Uren per week' ),
-        'new_item_name'     => __( 'New Uren per week Name' ),
-        'menu_name'         => __( 'Uren per week' ),
-    );
-    $args   = array(
-        'hierarchical'      => true, // make it hierarchical (like categories)
-        'labels'            => $labels,
-        'show_ui'           => true,
-        'show_admin_column' => true,
-        'show_in_rest'      => true,
-        'query_var'         => true,
-        'rewrite'           => [ 'slug' => 'uren_per_week' ],
-    );
-    register_taxonomy( 'uren_per_week', [ 'job_offer' ], $args );
-}
-function register_taxonomy_type_job() {
-    $labels = array(
-        'name'              => _x( 'Type job', 'taxonomy general name' ),
-        'singular_name'     => _x( 'Type job', 'taxonomy singular name' ),
-        'search_items'      => __( 'Search Type job' ),
-        'all_items'         => __( 'All Type job' ),
-        'parent_item'       => __( 'Parent Type job' ),
-        'parent_item_colon' => __( 'Parent Type job:' ),
-        'edit_item'         => __( 'Edit Type job' ),
-        'update_item'       => __( 'Update Type job' ),
-        'add_new_item'      => __( 'Add New Type job' ),
-        'new_item_name'     => __( 'New Type job Name' ),
-        'menu_name'         => __( 'Type job' ),
-    );
-    $args   = array(
-        'hierarchical'      => true, // make it hierarchical (like categories)
-        'labels'            => $labels,
-        'show_ui'           => true,
-        'show_admin_column' => true,
-        'show_in_rest'      => true,
-        'query_var'         => true,
-        'rewrite'           => [ 'slug' => 'type_job' ],
-    );
-    register_taxonomy( 'type_job', [ 'job_offer' ], $args );
-}
-function register_taxonomy_locatie() {
-    $labels = array(
-        'name'              => _x( 'Locaties', 'taxonomy general name' ),
-        'singular_name'     => _x( 'Locatie', 'taxonomy singular name' ),
-        'search_items'      => __( 'Search Locaties' ),
-        'all_items'         => __( 'All Locaties' ),
-        'parent_item'       => __( 'Parent Locatie' ),
-        'parent_item_colon' => __( 'Parent Locatie:' ),
-        'edit_item'         => __( 'Edit Locatie' ),
-        'update_item'       => __( 'Update Locatie' ),
-        'add_new_item'      => __( 'Add New Locatie' ),
-        'new_item_name'     => __( 'New Locatie Name' ),
-        'menu_name'         => __( 'Locatie' ),
-    );
-    $args   = array(
-        'hierarchical'      => true, // make it hierarchical (like categories)
-        'labels'            => $labels,
-        'show_ui'           => true,
-        'show_admin_column' => true,
-        'show_in_rest'      => true,
-        'query_var'         => true,
-        'rewrite'           => [ 'slug' => 'locatie' ],
-    );
-    register_taxonomy( 'locatie', [ 'job_offer' ], $args );
-}
+// function create_posttype_staff() {
+//     register_post_type( 'staff',
+//         array(
+//             'labels' => array(
+//                 'name' => __( 'Colleagues' ),
+//                 'singular_name' => __( 'Colleague' ),
+//                 'add_new_item' => __( 'Add New Colleague' ),
+//                 'add_new' => __( 'Add New Colleague' ),
+//                 'edit_item' => __( 'Edit Colleague' ),
+//                 'update_item' => __( 'Update Colleague' ),
+//             ),
+//             'public' => true,
+//             // 'has_archive' => true,
+//             // 'rewrite' => array('slug' => 'movies'),
+//             'show_in_rest' => true,
+//             // 'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+//             'supports'            => array( 'title'),
+//             )
+//     );
+// }
+// function create_posttype_job_offer() {
+//     register_post_type( 'job_offer',
+//         array(
+//             'labels' => array(
+//                 'name' => __( 'Job offers' ),
+//                 'singular_name' => __( 'Job offer' ),
+//                 'add_new_item' => __( 'Add New Job offer' ),
+//                 'add_new' => __( 'Add New Job offer' ),
+//                 'edit_item' => __( 'Edit Job offer' ),
+//                 'update_item' => __( 'Update Job offer' ),
+//             ),
+//             'public' => true,
+//             // 'has_archive' => true,
+//             // 'rewrite' => array('slug' => 'movies'),
+//             'show_in_rest' => true,
+//             // 'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+//             'supports'            => array( 'title'),
+//             )
+//     );
+// }
+// function create_posttype_interview() {
+//     register_post_type( 'interview',
+//         array(
+//             'labels' => array(
+//                 'name' => __( 'Interviews' ),
+//                 'singular_name' => __( 'Interview' ),
+//                 'add_new_item' => __( 'Add New Interview' ),
+//                 'add_new' => __( 'Add New Interview' ),
+//                 'edit_item' => __( 'Edit Interview' ),
+//                 'update_item' => __( 'Update Interview' ),
+//             ),
+//             'public' => true,
+//             // 'has_archive' => true,
+//             // 'rewrite' => array('slug' => 'movies'),
+//             'show_in_rest' => true,
+//             // 'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+//             'supports'            => array( 'title'),
+//             )
+//     );
+// }
+// function register_taxonomy_job_cat() {
+//     $labels = array(
+//         'name'              => _x( 'Categories', 'taxonomy general name' ),
+//         'singular_name'     => _x( 'Category', 'taxonomy singular name' ),
+//         'search_items'      => __( 'Search Categories' ),
+//         'all_items'         => __( 'All Categories' ),
+//         'parent_item'       => __( 'Parent Category' ),
+//         'parent_item_colon' => __( 'Parent Category:' ),
+//         'edit_item'         => __( 'Edit Category' ),
+//         'update_item'       => __( 'Update Category' ),
+//         'add_new_item'      => __( 'Add New Category' ),
+//         'new_item_name'     => __( 'New Category Name' ),
+//         'menu_name'         => __( 'Category' ),
+//     );
+//     $args   = array(
+//         'hierarchical'      => true, // make it hierarchical (like categories)
+//         'labels'            => $labels,
+//         'show_ui'           => true,
+//         'show_admin_column' => true,
+//         'show_in_rest'      => true,
+//         'query_var'         => true,
+//         'rewrite'           => [ 'slug' => 'job_cat' ],
+//     );
+//     register_taxonomy( 'job_cat', [ 'job_offer' ], $args );
+// }
+// function register_taxonomy_uren_per_week() {
+//     $labels = array(
+//         'name'              => _x( 'Uren per week', 'taxonomy general name' ),
+//         'singular_name'     => _x( 'Uren per week', 'taxonomy singular name' ),
+//         'search_items'      => __( 'Search Uren per week' ),
+//         'all_items'         => __( 'All Uren per week' ),
+//         'parent_item'       => __( 'Parent Uren per week' ),
+//         'parent_item_colon' => __( 'Parent Uren per week:' ),
+//         'edit_item'         => __( 'Edit Uren per week' ),
+//         'update_item'       => __( 'Update Uren per week' ),
+//         'add_new_item'      => __( 'Add New Uren per week' ),
+//         'new_item_name'     => __( 'New Uren per week Name' ),
+//         'menu_name'         => __( 'Uren per week' ),
+//     );
+//     $args   = array(
+//         'hierarchical'      => true, // make it hierarchical (like categories)
+//         'labels'            => $labels,
+//         'show_ui'           => true,
+//         'show_admin_column' => true,
+//         'show_in_rest'      => true,
+//         'query_var'         => true,
+//         'rewrite'           => [ 'slug' => 'uren_per_week' ],
+//     );
+//     register_taxonomy( 'uren_per_week', [ 'job_offer' ], $args );
+// }
+// function register_taxonomy_type_job() {
+//     $labels = array(
+//         'name'              => _x( 'Type job', 'taxonomy general name' ),
+//         'singular_name'     => _x( 'Type job', 'taxonomy singular name' ),
+//         'search_items'      => __( 'Search Type job' ),
+//         'all_items'         => __( 'All Type job' ),
+//         'parent_item'       => __( 'Parent Type job' ),
+//         'parent_item_colon' => __( 'Parent Type job:' ),
+//         'edit_item'         => __( 'Edit Type job' ),
+//         'update_item'       => __( 'Update Type job' ),
+//         'add_new_item'      => __( 'Add New Type job' ),
+//         'new_item_name'     => __( 'New Type job Name' ),
+//         'menu_name'         => __( 'Type job' ),
+//     );
+//     $args   = array(
+//         'hierarchical'      => true, // make it hierarchical (like categories)
+//         'labels'            => $labels,
+//         'show_ui'           => true,
+//         'show_admin_column' => true,
+//         'show_in_rest'      => true,
+//         'query_var'         => true,
+//         'rewrite'           => [ 'slug' => 'type_job' ],
+//     );
+//     register_taxonomy( 'type_job', [ 'job_offer' ], $args );
+// }
+// function register_taxonomy_locatie() {
+//     $labels = array(
+//         'name'              => _x( 'Locaties', 'taxonomy general name' ),
+//         'singular_name'     => _x( 'Locatie', 'taxonomy singular name' ),
+//         'search_items'      => __( 'Search Locaties' ),
+//         'all_items'         => __( 'All Locaties' ),
+//         'parent_item'       => __( 'Parent Locatie' ),
+//         'parent_item_colon' => __( 'Parent Locatie:' ),
+//         'edit_item'         => __( 'Edit Locatie' ),
+//         'update_item'       => __( 'Update Locatie' ),
+//         'add_new_item'      => __( 'Add New Locatie' ),
+//         'new_item_name'     => __( 'New Locatie Name' ),
+//         'menu_name'         => __( 'Locatie' ),
+//     );
+//     $args   = array(
+//         'hierarchical'      => true, // make it hierarchical (like categories)
+//         'labels'            => $labels,
+//         'show_ui'           => true,
+//         'show_admin_column' => true,
+//         'show_in_rest'      => true,
+//         'query_var'         => true,
+//         'rewrite'           => [ 'slug' => 'locatie' ],
+//     );
+//     register_taxonomy( 'locatie', [ 'job_offer' ], $args );
+// }
 
 
 $editor = get_role('editor');
@@ -310,56 +310,56 @@ function crbRegisterFields($args) {
                 //     // Field::make( 'image', 'image', 'Afbeelding' ),
                 //     // Field::make( 'rich_text', 'text', 'Tekst' ),
                 // ) )
-                ->add_fields( 'banner', 'Banner', array(
-                    Field::make( 'image', 'image', 'Afbeelding' ),
-                    Field::make( 'select', 'image_opacity', __( 'Choose image transparancy' ) )
-                        ->set_options( array(
-                            'none' => __( 'None' ),
-                            'black' => __( 'Black transparancy' ),
-                            'white' => __( 'White transparancy' ),
-                        ) ),
-                    Field::make( 'checkbox', 'extra_padding', __( 'Add extra padding' ) ),
-                    // Field::make( 'text', 'writing_letters_header', __( 'Writing letters header (gold)' ) ),
-                    // Field::make( 'text', 'block_letters_header', __( 'Block letters header' ) ),
-                    Field::make( 'rich_text', 'text', 'Tekst (on top of image)' ),
-                    Field::make( 'select', 'text_align', __( 'Choose text alignment' ) )
-                        ->set_options( array(
-                            'left' => __( 'Left' ),
-                            'center' => __( 'Center' ),
-                        ) ),
-                    Field::make( 'select', 'text_color', __( 'Choose text color' ) )
-                        ->set_options( array(
-                            'white' => __( 'White' ),
-                            'black' => __( 'Black' ),
-                        ) ),
+                // ->add_fields( 'banner', 'Banner', array(
+                //     Field::make( 'image', 'image', 'Afbeelding' ),
+                //     Field::make( 'select', 'image_opacity', __( 'Choose image transparancy' ) )
+                //         ->set_options( array(
+                //             'none' => __( 'None' ),
+                //             'black' => __( 'Black transparancy' ),
+                //             'white' => __( 'White transparancy' ),
+                //         ) ),
+                //     Field::make( 'checkbox', 'extra_padding', __( 'Add extra padding' ) ),
+                //     // Field::make( 'text', 'writing_letters_header', __( 'Writing letters header (gold)' ) ),
+                //     // Field::make( 'text', 'block_letters_header', __( 'Block letters header' ) ),
+                //     Field::make( 'rich_text', 'text', 'Tekst (on top of image)' ),
+                //     Field::make( 'select', 'text_align', __( 'Choose text alignment' ) )
+                //         ->set_options( array(
+                //             'left' => __( 'Left' ),
+                //             'center' => __( 'Center' ),
+                //         ) ),
+                //     Field::make( 'select', 'text_color', __( 'Choose text color' ) )
+                //         ->set_options( array(
+                //             'white' => __( 'White' ),
+                //             'black' => __( 'Black' ),
+                //         ) ),
 
-                    Field::make( 'complex', 'links', __( 'Add Links' ) )
-                        ->add_fields( array(
-                            Field::make( 'text', 'button_text', __( 'Button text' ) ),
-                            Field::make( 'select', 'button_color', __( 'Button color' ) )
-                                ->set_options( array(
-                                    'pink' => __( 'Pink' ),
-                                    'black' => __( 'Black' ),
-                                    'white' => __( 'White' ),
-                                ) ),
-                            Field::make( 'association', 'links', __( 'Select page for button link (custom button link must be left empty)' ))
-                                ->set_types( array(
-                                    array(
-                                        'type' => 'post',
-                                        'taxonomy' => 'page',
-                                    ),
-                                ) ),
-                            Field::make( 'text', 'custom_link', __( 'Custom button link' ) ),
-                        )),
+                //     Field::make( 'complex', 'links', __( 'Add Links' ) )
+                //         ->add_fields( array(
+                //             Field::make( 'text', 'button_text', __( 'Button text' ) ),
+                //             Field::make( 'select', 'button_color', __( 'Button color' ) )
+                //                 ->set_options( array(
+                //                     'pink' => __( 'Pink' ),
+                //                     'black' => __( 'Black' ),
+                //                     'white' => __( 'White' ),
+                //                 ) ),
+                //             Field::make( 'association', 'links', __( 'Select page for button link (custom button link must be left empty)' ))
+                //                 ->set_types( array(
+                //                     array(
+                //                         'type' => 'post',
+                //                         'taxonomy' => 'page',
+                //                     ),
+                //                 ) ),
+                //             Field::make( 'text', 'custom_link', __( 'Custom button link' ) ),
+                //         )),
 
-                ) )
+                // ) )
                 ->add_fields( 'text', 'Tekst', array(
-                    Field::make( 'select', 'background_color', __( 'Background color' ) )
-                        ->set_options( array(
-                            'white' => __( 'White' ),
-                            'grey' => __( 'Grey' ),
-                            'pink' => __( 'Pink' ),
-                        ) ),
+                    // Field::make( 'select', 'background_color', __( 'Background color' ) )
+                    //     ->set_options( array(
+                    //         'white' => __( 'White' ),
+                    //         'grey' => __( 'Grey' ),
+                    //         'pink' => __( 'Pink' ),
+                    //     ) ),
                     // Field::make( 'select', 'color', __( 'Choose background color' ) )
                     // ->set_options( array(
                     //     '' => __( 'White' ),
@@ -399,76 +399,76 @@ function crbRegisterFields($args) {
                         // ->set_type( array( 'image', ) ),
                         // ->set_value_type( 'url' ),
                 ) )
-                ->add_fields( 'text_flex', 'Tekst (2-column)', array(
-                    Field::make( 'text', 'header', __( 'Header' ) ),
-                    Field::make( 'rich_text', 'text_left', 'Text left' ),
-                    Field::make( 'complex', 'links_left', __( 'Add links' ) )
-                        ->add_fields( array(
-                            Field::make( 'text', 'button_text', __( 'Button text' ) ),
-                            Field::make( 'select', 'button_color', __( 'Button color' ) )
-                                ->set_options( array(
-                                    'pink' => __( 'Pink' ),
-                                    'black' => __( 'Black' ),
-                                    'white' => __( 'White' ),
-                                ) ),
-                            Field::make( 'association', 'links', __( 'Select page for button link (custom button link must be left empty)' ))
-                                ->set_types( array(
-                                    array(
-                                        'type' => 'post',
-                                        'taxonomy' => 'page',
-                                    ),
-                                ) ),
-                            Field::make( 'text', 'custom_link', __( 'Custom button link' ) ),
-                        )),
+                // ->add_fields( 'text_flex', 'Tekst (2-column)', array(
+                //     Field::make( 'text', 'header', __( 'Header' ) ),
+                //     Field::make( 'rich_text', 'text_left', 'Text left' ),
+                //     Field::make( 'complex', 'links_left', __( 'Add links' ) )
+                //         ->add_fields( array(
+                //             Field::make( 'text', 'button_text', __( 'Button text' ) ),
+                //             Field::make( 'select', 'button_color', __( 'Button color' ) )
+                //                 ->set_options( array(
+                //                     'pink' => __( 'Pink' ),
+                //                     'black' => __( 'Black' ),
+                //                     'white' => __( 'White' ),
+                //                 ) ),
+                //             Field::make( 'association', 'links', __( 'Select page for button link (custom button link must be left empty)' ))
+                //                 ->set_types( array(
+                //                     array(
+                //                         'type' => 'post',
+                //                         'taxonomy' => 'page',
+                //                     ),
+                //                 ) ),
+                //             Field::make( 'text', 'custom_link', __( 'Custom button link' ) ),
+                //         )),
 
-                    Field::make( 'rich_text', 'text_right', 'Text right' ),
-                    Field::make( 'complex', 'links_right', __( 'Add links' ) )
-                        ->add_fields( array(
-                            Field::make( 'text', 'button_text', __( 'Button text' ) ),
-                            Field::make( 'select', 'button_color', __( 'Button color' ) )
-                                ->set_options( array(
-                                    'pink' => __( 'Pink' ),
-                                    'black' => __( 'Black' ),
-                                    'white' => __( 'White' ),
-                                ) ),
-                            Field::make( 'association', 'links', __( 'Select page for button link (custom button link must be left empty)' ))
-                                ->set_types( array(
-                                    array(
-                                        'type' => 'post',
-                                        'taxonomy' => 'page',
-                                    ),
-                                ) ),
-                            Field::make( 'text', 'custom_link', __( 'Custom button link' ) ),
-                        )),
+                //     Field::make( 'rich_text', 'text_right', 'Text right' ),
+                //     Field::make( 'complex', 'links_right', __( 'Add links' ) )
+                //         ->add_fields( array(
+                //             Field::make( 'text', 'button_text', __( 'Button text' ) ),
+                //             Field::make( 'select', 'button_color', __( 'Button color' ) )
+                //                 ->set_options( array(
+                //                     'pink' => __( 'Pink' ),
+                //                     'black' => __( 'Black' ),
+                //                     'white' => __( 'White' ),
+                //                 ) ),
+                //             Field::make( 'association', 'links', __( 'Select page for button link (custom button link must be left empty)' ))
+                //                 ->set_types( array(
+                //                     array(
+                //                         'type' => 'post',
+                //                         'taxonomy' => 'page',
+                //                     ),
+                //                 ) ),
+                //             Field::make( 'text', 'custom_link', __( 'Custom button link' ) ),
+                //         )),
 
-                    Field::make( 'select', 'background_color', __( 'Background color' ) )
-                        ->set_options( array(
-                            'white' => __( 'White' ),
-                            'pink' => __( 'Pink' ),
-                        ) ),
-                    Field::make( 'select', 'stretch', __( 'Left or right stretch' ) )
-                        ->set_options( array(
-                            'equal' => __( 'Equal width columns' ),
-                            'left' => __( 'Left column wider' ),
-                            'right' => __( 'Right column wider' ),
-                        ) ),
-                ) )
-                ->add_fields( 'text_grid', 'Tekst (grid)', array(
-                    Field::make( 'complex', 'crb_media_item' )
-                        ->add_fields( 'text', array(
-                            Field::make( 'rich_text', 'text', 'Text' ),
-                            Field::make( 'select', 'cell_color', __( 'Cell color' ) )
-                                ->set_options( array(
-                                    'white' => __( 'White' ),
-                                    'pink' => __( 'Pink' ),
-                                    'grey' => __( 'Grey' ),
-                                    'black' => __( 'Black' ),
-                                ) ),
-                        ) )
-                        ->add_fields( 'afbeelding', array(
-                            Field::make( 'image', 'image', 'Afbeelding' ),
-                        ) )
-                ) )
+                //     Field::make( 'select', 'background_color', __( 'Background color' ) )
+                //         ->set_options( array(
+                //             'white' => __( 'White' ),
+                //             'pink' => __( 'Pink' ),
+                //         ) ),
+                //     Field::make( 'select', 'stretch', __( 'Left or right stretch' ) )
+                //         ->set_options( array(
+                //             'equal' => __( 'Equal width columns' ),
+                //             'left' => __( 'Left column wider' ),
+                //             'right' => __( 'Right column wider' ),
+                //         ) ),
+                // ) )
+                // ->add_fields( 'text_grid', 'Tekst (grid)', array(
+                //     Field::make( 'complex', 'crb_media_item' )
+                //         ->add_fields( 'text', array(
+                //             Field::make( 'rich_text', 'text', 'Text' ),
+                //             Field::make( 'select', 'cell_color', __( 'Cell color' ) )
+                //                 ->set_options( array(
+                //                     'white' => __( 'White' ),
+                //                     'pink' => __( 'Pink' ),
+                //                     'grey' => __( 'Grey' ),
+                //                     'black' => __( 'Black' ),
+                //                 ) ),
+                //         ) )
+                //         ->add_fields( 'afbeelding', array(
+                //             Field::make( 'image', 'image', 'Afbeelding' ),
+                //         ) )
+                // ) )
                 // ->add_fields( 'text_green', 'Tekst (Groene achtergrond)', array(
                 //     Field::make( 'rich_text', 'text', 'Text' ),
                 // ) )
@@ -480,21 +480,21 @@ function crbRegisterFields($args) {
                 //     Field::make( 'image', 'image2', 'Afbeelding 2' )->set_value_type( 'url' ),
                 //     Field::make( 'image', 'image3', 'Afbeelding 3' )->set_value_type( 'url' ),
                 // ) )
-                ->add_fields( 'info_icons', 'Info icons', array(
-                    Field::make( 'complex', 'info_icons', 'Info icons' )
-                        ->add_fields( array(
-                            Field::make( 'image', 'image', 'Afbeelding' ),
-                            Field::make( 'rich_text', 'text', 'Tekst' ),
-                        ))
-                ) )
-                ->add_fields( 'testimonials', 'Testimonials', array(
-                    Field::make( 'complex', 'testimonials', 'Testimonials' )
-                        ->add_fields( array(
-                            Field::make( 'text', 'header', __( 'Header' ) ),
-                            Field::make( 'textarea', 'message', __( 'Message' ) ),
-                            Field::make( 'text', 'name', __( 'Name' ) ),
-                        ))
-                ) )
+                // ->add_fields( 'info_icons', 'Info icons', array(
+                //     Field::make( 'complex', 'info_icons', 'Info icons' )
+                //         ->add_fields( array(
+                //             Field::make( 'image', 'image', 'Afbeelding' ),
+                //             Field::make( 'rich_text', 'text', 'Tekst' ),
+                //         ))
+                // ) )
+                // ->add_fields( 'testimonials', 'Testimonials', array(
+                //     Field::make( 'complex', 'testimonials', 'Testimonials' )
+                //         ->add_fields( array(
+                //             Field::make( 'text', 'header', __( 'Header' ) ),
+                //             Field::make( 'textarea', 'message', __( 'Message' ) ),
+                //             Field::make( 'text', 'name', __( 'Name' ) ),
+                //         ))
+                // ) )
                 // ->add_fields( 'solutions', __( 'Solutions' ) . ' (full-width blue background, icon + text)', array(
                 //     Field::make( 'complex', 'icon_boxes', 'Text and an icon from fontawesome.com (use the icon \'name\')' )
                 //         ->add_fields( array(
@@ -568,24 +568,24 @@ function crbRegisterFields($args) {
                 //             // Field::make( 'rich_text', 'text' , __( 'Text' )),
                 //         )),
                 // ) )
-                ->add_fields( 'colleagues', __( 'People' ), array(
-                    Field::make( 'association', 'colleague_associations', __( 'Select colleagues' ))
-                    ->set_types( array(
-                        array(
-                            'type' => 'post',
-                            'post_type' => 'staff',
-                        ),
-                    ) )
-                ) )
-                ->add_fields( 'joboffers', __( 'Job offers' ), array(
-                    Field::make( 'association', 'job_offer_associations3', __( 'Select job offers' ))
-                    ->set_types( array(
-                        array(
-                            'type' => 'post',
-                            'post_type' => 'job_offer',
-                        ),
-                    ) )
-                ) )
+                // ->add_fields( 'colleagues', __( 'People' ), array(
+                //     Field::make( 'association', 'colleague_associations', __( 'Select colleagues' ))
+                //     ->set_types( array(
+                //         array(
+                //             'type' => 'post',
+                //             'post_type' => 'staff',
+                //         ),
+                //     ) )
+                // ) )
+                // ->add_fields( 'joboffers', __( 'Job offers' ), array(
+                //     Field::make( 'association', 'job_offer_associations3', __( 'Select job offers' ))
+                //     ->set_types( array(
+                //         array(
+                //             'type' => 'post',
+                //             'post_type' => 'job_offer',
+                //         ),
+                //     ) )
+                // ) )
                 // ->add_fields( 'advantages_and_testimonials', 'Voordelen en klantervaringen', array(
                 //     Field::make( 'complex', 'advantages', 'Onze voordelen' )
                 //         ->add_fields( array(
@@ -626,57 +626,57 @@ function crbRegisterFields($args) {
     //     ->where( 'post_type', '=', 'page' )
     //     // ->where( 'post_template', '=', 'template-section-based.php' )
     //     ->add_fields( array(Field::make( 'text', 'crb_alt_url', __( 'Alternative URL' ))) );
-    Container::make( 'post_meta', __( 'Information' ) )
-        ->where( 'post_type', '=', 'staff' )
-        // ->where( 'post_template', '=', 'template-section-based.php' )
-        ->add_fields(array(
-                Field::make( 'text', 'function', __( 'Function' ))->set_visible_in_rest_api($visible = true),
-                Field::make( 'rich_text', 'text', __( 'Text' ))->set_visible_in_rest_api($visible = true),
-                // Field::make( 'text', 'board_email', __( 'E-mail' ))->set_visible_in_rest_api($visible = true),
-                // Field::make( 'text', 'board_phone', __( 'Phone' ))->set_visible_in_rest_api($visible = true),
-                Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
-            )
-        );
-    Container::make( 'post_meta', __( 'Information' ) )
-        ->where( 'post_type', '=', 'job_offer' )
-        // ->where( 'post_template', '=', 'template-section-based.php' )
-        ->add_fields(array(
-                Field::make( 'textarea', 'intro', __( 'Introduction text. Used in overview.' ))->set_visible_in_rest_api($visible = true),
-                Field::make( 'rich_text', 'text', __( 'Text' ))->set_visible_in_rest_api($visible = true),
-                // Field::make( 'text', 'board_email', __( 'E-mail' ))->set_visible_in_rest_api($visible = true),
-                // Field::make( 'text', 'board_phone', __( 'Phone' ))->set_visible_in_rest_api($visible = true),
-                Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
-            )
-        );
-    Container::make( 'post_meta', __( 'Information' ) )
-        ->where( 'post_type', '=', 'interview' )
-        ->add_fields(array(
-                Field::make( 'textarea', 'intro', __( 'Introduction text. Used in overview.' ))->set_visible_in_rest_api($visible = true),
-                Field::make( 'rich_text', 'text', __( 'Text' ))->set_visible_in_rest_api($visible = true),
-                Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
-            )
-        );
+    // Container::make( 'post_meta', __( 'Information' ) )
+    //     ->where( 'post_type', '=', 'staff' )
+    //     // ->where( 'post_template', '=', 'template-section-based.php' )
+    //     ->add_fields(array(
+    //             Field::make( 'text', 'function', __( 'Function' ))->set_visible_in_rest_api($visible = true),
+    //             Field::make( 'rich_text', 'text', __( 'Text' ))->set_visible_in_rest_api($visible = true),
+    //             // Field::make( 'text', 'board_email', __( 'E-mail' ))->set_visible_in_rest_api($visible = true),
+    //             // Field::make( 'text', 'board_phone', __( 'Phone' ))->set_visible_in_rest_api($visible = true),
+    //             Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
+    //         )
+    //     );
+    // Container::make( 'post_meta', __( 'Information' ) )
+    //     ->where( 'post_type', '=', 'job_offer' )
+    //     // ->where( 'post_template', '=', 'template-section-based.php' )
+    //     ->add_fields(array(
+    //             Field::make( 'textarea', 'intro', __( 'Introduction text. Used in overview.' ))->set_visible_in_rest_api($visible = true),
+    //             Field::make( 'rich_text', 'text', __( 'Text' ))->set_visible_in_rest_api($visible = true),
+    //             // Field::make( 'text', 'board_email', __( 'E-mail' ))->set_visible_in_rest_api($visible = true),
+    //             // Field::make( 'text', 'board_phone', __( 'Phone' ))->set_visible_in_rest_api($visible = true),
+    //             Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
+    //         )
+    //     );
+    // Container::make( 'post_meta', __( 'Information' ) )
+    //     ->where( 'post_type', '=', 'interview' )
+    //     ->add_fields(array(
+    //             Field::make( 'textarea', 'intro', __( 'Introduction text. Used in overview.' ))->set_visible_in_rest_api($visible = true),
+    //             Field::make( 'rich_text', 'text', __( 'Text' ))->set_visible_in_rest_api($visible = true),
+    //             Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
+    //         )
+    //     );
 
-    Container::make('term_meta', 'Woo Category Options')
-        ->where('term_taxonomy', '=', 'product_cat')
-        // ->add_tab( __( 'Profile' ), array(
-        ->add_fields( array(
-            Field::make( 'radio', 'crb_catalogus_type', __( 'Choose catalogus type' ) )->set_visible_in_rest_api($visible = true)
-            ->set_options( array(
-                'shop' => 'Shop',
-                'list' => 'List',
-            ) ),
-            Field::make( 'rich_text', 'crb_category_text', __( 'Text' ) )->set_visible_in_rest_api($visible = true),
-        ));
+    // Container::make('term_meta', 'Woo Category Options')
+    //     ->where('term_taxonomy', '=', 'product_cat')
+    //     // ->add_tab( __( 'Profile' ), array(
+    //     ->add_fields( array(
+    //         Field::make( 'radio', 'crb_catalogus_type', __( 'Choose catalogus type' ) )->set_visible_in_rest_api($visible = true)
+    //         ->set_options( array(
+    //             'shop' => 'Shop',
+    //             'list' => 'List',
+    //         ) ),
+    //         Field::make( 'rich_text', 'crb_category_text', __( 'Text' ) )->set_visible_in_rest_api($visible = true),
+    //     ));
 
-    Container::make('post_meta', 'Product Options')
-        ->where('post_type', '=', 'product')
-        ->add_fields( array(
-            // Field::make( 'rich_text', 'crb_extra_product_text', __( 'Product text for testing' ) )->set_visible_in_rest_api($visible = true),
-            Field::make('checkbox', 'is_featured', __('Is featured product?'))->set_option_value('yes')->set_visible_in_rest_api($visible = true),
-            Field::make('text', 'min_pk', __( 'Minimum pk' ))->set_visible_in_rest_api($visible = true),
-            Field::make('text', 'max_pk', __( 'Maximum pk' ))->set_visible_in_rest_api($visible = true),
-        ));
+    // Container::make('post_meta', 'Product Options')
+    //     ->where('post_type', '=', 'product')
+    //     ->add_fields( array(
+    //         // Field::make( 'rich_text', 'crb_extra_product_text', __( 'Product text for testing' ) )->set_visible_in_rest_api($visible = true),
+    //         Field::make('checkbox', 'is_featured', __('Is featured product?'))->set_option_value('yes')->set_visible_in_rest_api($visible = true),
+    //         Field::make('text', 'min_pk', __( 'Minimum pk' ))->set_visible_in_rest_api($visible = true),
+    //         Field::make('text', 'max_pk', __( 'Maximum pk' ))->set_visible_in_rest_api($visible = true),
+    //     ));
 
     $fieldsToAdd = array();
     foreach($args['websiteOptions'] as $opt) {
