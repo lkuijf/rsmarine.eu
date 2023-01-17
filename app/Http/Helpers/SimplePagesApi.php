@@ -11,6 +11,7 @@ class SimplePagesApi extends ApiCall {
 
         /* edit 17-1-2013  */
         /* if $this->res === null SSL-certificate is probably missing set CURLOPT_SSL_VERIFYHOST & CURLOPT_SSL_VERIFYPEER in ApiCall.php */
+        /* if $this->res === null Or domain is not resolvable */
         foreach($this->res as $page) {
             $order = $page->order;
             if(isset($this->pagesPerParent[$page->parent][$order])) $order = count($this->pagesPerParent[$page->parent]); /* als de order 0,0,0,0 is bijvoorbeeld */
