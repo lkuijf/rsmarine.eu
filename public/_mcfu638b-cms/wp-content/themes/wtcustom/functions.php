@@ -626,7 +626,19 @@ function crbRegisterFields($args) {
                         ->add_fields('bestand', array(
                             Field::make( 'file', 'file', 'Bestand' ),
                             Field::make( 'text', 'title', 'Titel' ),
+                        ) )
+                        ->add_fields('nieuws', array(
+                            Field::make( 'association', 'colleague_associations', __( 'Select colleagues' ))
+                            ->set_types( array(
+                                array(
+                                    'type' => 'post',
+                                    'post_type' => 'news',
+                                ),
+                            ) )
                         ) ),
+
+
+
 
                 ) )
 
