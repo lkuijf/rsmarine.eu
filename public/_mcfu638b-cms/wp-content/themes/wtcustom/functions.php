@@ -356,7 +356,7 @@ function crbRegisterFields($args) {
                 //         )),
 
                 // ) )
-                ->add_fields( 'text', 'Tekst', array(
+                // ->add_fields( 'text', 'Tekst', array(
                     // Field::make( 'select', 'background_color', __( 'Background color' ) )
                     //     ->set_options( array(
                     //         'white' => __( 'White' ),
@@ -381,7 +381,7 @@ function crbRegisterFields($args) {
                     //     '-20' => __( '-20 pixels' ),
                     //     '-30' => __( '-30 pixels' ),
                     // ) ),
-                    Field::make( 'rich_text', 'text', 'Text' ),
+                    // Field::make( 'rich_text', 'text', 'Text' ),
                     // Field::make( 'checkbox', 'vertical_align_center', 'Align text to center (vertically)' ),
                     // Field::make( 'image', 'image', 'Afbeelding' )->set_value_type( 'url' ),
                     // Field::make( 'select', 'orientation', __( 'Choose orientation' ) )
@@ -401,7 +401,7 @@ function crbRegisterFields($args) {
                     // Field::make( 'media_gallery', 'crb_media_gallery', __( 'Images' ) . ' (' . __( 'optional' ) . ')' )
                         // ->set_type( array( 'image', ) ),
                         // ->set_value_type( 'url' ),
-                ) )
+                // ) )
                 // ->add_fields( 'text_flex', 'Tekst (2-column)', array(
                 //     Field::make( 'text', 'header', __( 'Header' ) ),
                     // Field::make( 'rich_text', 'text_left', 'Text left' ),
@@ -605,20 +605,19 @@ function crbRegisterFields($args) {
                 //         )),
                 // ) )
                 
-                ->add_fields( 'file_list', 'Downloads', array(
-                    Field::make( 'complex', 'files', 'Downloads' )
-                    ->add_fields('1111', array(
-                        Field::make( 'file', 'file', 'Bestand' ),
-                        Field::make( 'text', 'name', 'Titel' ),
-                    ) )
-                    ->add_fields('2222', array(
-                        Field::make( 'file', 'file2', 'Bestand2' ),
-                        Field::make( 'text', 'name2', 'Titel2' ),
-                    ) )
-                ) )
+                // ->add_fields( 'file_list', 'Downloads', array(
+                //     Field::make( 'complex', 'files', 'Downloads' )
+                //     ->add_fields('1111', array(
+                //         Field::make( 'file', 'file', 'Bestand' ),
+                //         Field::make( 'text', 'name', 'Titel' ),
+                //     ) )
+                //     ->add_fields('2222', array(
+                //         Field::make( 'file', 'file2', 'Bestand2' ),
+                //         Field::make( 'text', 'name2', 'Titel2' ),
+                //     ) )
+                // ) )
 
                 ->add_fields( '1column', 'Content', array(
-
                     Field::make( 'complex', 'left', 'Content' )
                         ->add_fields('tekst', array(
                             Field::make( 'rich_text', 'text', 'Tekst' ),
@@ -636,14 +635,9 @@ function crbRegisterFields($args) {
                                 ),
                             ) )
                         ) ),
-
-
-
-
                 ) )
 
                 ->add_fields( '2column', 'Content (2 kolommen)', array(
-
                     Field::make( 'complex', 'left', 'Linker kolom' )
                         ->add_fields('tekst', array(
                             Field::make( 'rich_text', 'text', 'Tekst' ),
@@ -661,7 +655,6 @@ function crbRegisterFields($args) {
                                 ),
                             ) )
                         ) ),
-
                     Field::make( 'complex', 'right', 'Rechter kolom' )
                         ->add_fields('tekst', array(
                             Field::make( 'rich_text', 'text', 'Tekst' ),
