@@ -402,9 +402,9 @@ function crbRegisterFields($args) {
                         // ->set_type( array( 'image', ) ),
                         // ->set_value_type( 'url' ),
                 ) )
-                ->add_fields( 'text_flex', 'Tekst (2-column)', array(
+                // ->add_fields( 'text_flex', 'Tekst (2-column)', array(
                 //     Field::make( 'text', 'header', __( 'Header' ) ),
-                    Field::make( 'rich_text', 'text_left', 'Text left' ),
+                    // Field::make( 'rich_text', 'text_left', 'Text left' ),
                 //     Field::make( 'complex', 'links_left', __( 'Add links' ) )
                 //         ->add_fields( array(
                 //             Field::make( 'text', 'button_text', __( 'Button text' ) ),
@@ -424,7 +424,7 @@ function crbRegisterFields($args) {
                 //             Field::make( 'text', 'custom_link', __( 'Custom button link' ) ),
                 //         )),
 
-                    Field::make( 'rich_text', 'text_right', 'Text right' ),
+                    // Field::make( 'rich_text', 'text_right', 'Text right' ),
                 //     Field::make( 'complex', 'links_right', __( 'Add links' ) )
                 //         ->add_fields( array(
                 //             Field::make( 'text', 'button_text', __( 'Button text' ) ),
@@ -455,7 +455,7 @@ function crbRegisterFields($args) {
                 //             'left' => __( 'Left column wider' ),
                 //             'right' => __( 'Right column wider' ),
                 //         ) ),
-                ) )
+                // ) )
                 // ->add_fields( 'text_grid', 'Tekst (grid)', array(
                 //     Field::make( 'complex', 'crb_media_item' )
                 //         ->add_fields( 'text', array(
@@ -615,6 +615,26 @@ function crbRegisterFields($args) {
                         Field::make( 'file', 'file2', 'Bestand2' ),
                         Field::make( 'text', 'name2', 'Titel2' ),
                     ) )
+                ) )
+
+                ->add_fields( '2column', '2 kolom layout', array(
+
+                    Field::make( 'complex', 'left', 'Linker kolom' )
+                        ->add_fields('text', array(
+                            Field::make( 'text', 'name', 'Tekst' ),
+                        ) )
+                        ->add_fields('file', array(
+                            Field::make( 'file', 'file', 'Bestand' ),
+                        ) ),
+
+                    Field::make( 'complex', 'right', 'Rechter kolom' )
+                        ->add_fields('text2', array(
+                            Field::make( 'text', 'name2', 'Tekst' ),
+                        ) )
+                        ->add_fields('file2', array(
+                            Field::make( 'file', 'file2', 'Bestand' ),
+                        ) )
+
                 ) )
 
                 // // Third group will be a list of manually selected posts
