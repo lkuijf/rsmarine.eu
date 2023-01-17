@@ -620,18 +620,18 @@ function crbRegisterFields($args) {
                 ->add_fields( '2column', '2 kolom layout', array(
 
                     Field::make( 'complex', 'left', 'Linker kolom' )
-                        ->add_fields('Tekst3', array(
+                        ->add_fields('tekst3', array(
                             Field::make( 'rich_text', 'text_left', 'Tekst' ),
                         ) )
-                        ->add_fields('Bestand3', array(
+                        ->add_fields('bestand3', array(
                             Field::make( 'file', 'file_left', 'Bestand' ),
                         ) ),
 
                     Field::make( 'complex', 'right', 'Rechter kolom' )
-                        ->add_fields('Tekst4', array(
+                        ->add_fields('tekst4', array(
                             Field::make( 'rich_text', 'text_right', 'Tekst' ),
                         ) )
-                        ->add_fields('Bestand4', array(
+                        ->add_fields('bestand4', array(
                             Field::make( 'file', 'file_right', 'Bestand' ),
                         ) )
 
