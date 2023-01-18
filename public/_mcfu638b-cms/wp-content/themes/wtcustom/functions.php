@@ -665,6 +665,9 @@ function crbRegisterFields($args) {
                         ->add_fields('tekst', array(
                             Field::make( 'rich_text', 'text', 'Tekst' ),
                         ) )
+                        ->add_fields('afbeelding', array(
+                            Field::make( 'image', 'image', 'Afbeelding' ),
+                        ) )
                         ->add_fields('bestand', array(
                             Field::make( 'file', 'file', 'Bestand' ),
                             Field::make( 'text', 'title', 'Titel' ),
