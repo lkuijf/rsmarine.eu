@@ -618,7 +618,7 @@ function crbRegisterFields($args) {
                 // ) )
 
                 ->add_fields( '1column', 'Content', array(
-                    Field::make( 'complex', 'left', 'Content' )
+                    Field::make( 'complex', 'fullwidth', 'Content' )
                         ->add_fields('tekst', array(
                             Field::make( 'rich_text', 'text', 'Tekst' ),
                         ) )

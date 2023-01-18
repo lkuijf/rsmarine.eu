@@ -236,6 +236,10 @@ class PagesController extends Controller
                 //     $s['img']['url'] = $img;
                 //     $s['img']['alt'] = str_replace(['-', '_'], ' ', pathinfo($img, PATHINFO_FILENAME));
                 // }
+                if($sec->_type == '1column') {
+                }
+                if($sec->_type == '2column') {
+                }
                 if($sec->_type == 'banner') {
                     // $s['wl_header'] = $sec->writing_letters_header;
                     // $s['bl_header'] = $sec->block_letters_header;
