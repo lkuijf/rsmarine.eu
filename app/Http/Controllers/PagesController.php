@@ -236,6 +236,8 @@ class PagesController extends Controller
                 //     $s['img']['url'] = $img;
                 //     $s['img']['alt'] = str_replace(['-', '_'], ' ', pathinfo($img, PATHINFO_FILENAME));
                 // }
+
+
                 if($sec->_type == '1column') {
                     if(isset($sec->fullwidth) && count($sec->fullwidth)) {
                         $s['1column'] = array();
@@ -248,6 +250,18 @@ class PagesController extends Controller
                             if($fullWidthItem->_type == 'bestand') {
                                 $fullWidthItem->file = $this->generateImageUrl($fullWidthItem->file);
                             }
+
+                            if($fullWidthItem->_type == 'nieuws-items') {
+                                $aValuesToRetreive = array('title', 'site_title', 'news_url', 'text', 'image');
+                                if(isset($fullWidthItem->news_associations) && count($fullWidthItem->news_associations)) {
+                                    foreach($fullWidthItem->news_associations as $k => $newsItem) {
+                                        $oCustPostType = $this->getCustomPostTypeViaRestApi($newsItem->subtype, $newsItem->id, $aValuesToRetreive);
+                                        if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery(array($oCustPostType->image));
+                                        $fullWidthItem->news_associations[$k] = $oCustPostType;
+                                    }
+                                }
+                            }
+
                             $s['1column'][] =  $fullWidthItem;
                         }
                     }
@@ -265,6 +279,16 @@ class PagesController extends Controller
                             if($leftItem->_type == 'bestand') {
                                 $leftItem->file = $this->generateImageUrl($leftItem->file);
                             }
+                            if($leftItem->_type == 'nieuws-items') {
+                                $aValuesToRetreive = array('title', 'site_title', 'news_url', 'text', 'image');
+                                if(isset($leftItem->news_associations) && count($leftItem->news_associations)) {
+                                    foreach($leftItem->news_associations as $k => $newsItem) {
+                                        $oCustPostType = $this->getCustomPostTypeViaRestApi($newsItem->subtype, $newsItem->id, $aValuesToRetreive);
+                                        if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery(array($oCustPostType->image));
+                                        $leftItem->news_associations[$k] = $oCustPostType;
+                                    }
+                                }
+                            }
                             $s['2column']['left'][] = $leftItem;
                         }
                     }
@@ -277,6 +301,16 @@ class PagesController extends Controller
                             }
                             if($rightItem->_type == 'bestand') {
                                 $rightItem->file = $this->generateImageUrl($rightItem->file);
+                            }
+                            if($rightItem->_type == 'nieuws-items') {
+                                $aValuesToRetreive = array('title', 'site_title', 'news_url', 'text', 'image');
+                                if(isset($rightItem->news_associations) && count($rightItem->news_associations)) {
+                                    foreach($rightItem->news_associations as $k => $newsItem) {
+                                        $oCustPostType = $this->getCustomPostTypeViaRestApi($newsItem->subtype, $newsItem->id, $aValuesToRetreive);
+                                        if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery(array($oCustPostType->image));
+                                        $rightItem->news_associations[$k] = $oCustPostType;
+                                    }
+                                }
                             }
                             $s['2column']['right'][] = $rightItem;
                         }
@@ -607,7 +641,7 @@ class PagesController extends Controller
                 $sections[] = $s;
             }
         }
-dd($sections);
+// dd($sections);
         $res->pageMetaDescription = $metaDesc;
         $res->pageTitle = $hTitle;
         $res->contentSections = $sections;

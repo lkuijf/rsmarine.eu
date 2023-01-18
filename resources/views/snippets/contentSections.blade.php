@@ -1,16 +1,45 @@
 @foreach ($data['content_sections'] as $section)
 
-        {{-- @if ($section['type'] == '1column')
-            @foreach ($section['1column'] as $data)
-                @if ($data['_type'] == 'tekst')
-                    
+        @if ($section['type'] == '1column')
+            @foreach ($section['1column'] as $secData)
+                @if ($secData->_type == 'tekst')
+                    @include('sections.text', [
+                    'text' => $secData->text,
+                    ])
                 @endif
+
+                @if ($secData->_type == 'afbeelding')
+                    @include('sections.afbeelding', [
+                    'imgUrl' => $secData->img,
+                    'imgAlt' => $secData->alt,
+                    ])
+                @endif
+
+                @if ($secData->_type == 'bestand')
+                    @include('sections.bestand', [
+                    'file' => $secData->file,
+                    'title' => $secData->title,
+                    ])
+                @endif
+
+                @if ($secData->_type == 'nieuws-items')
+                    @foreach ($secData->news_associations as $newsItem)
+                        @include('sections.news', [
+                        'title' => $newsItem->title,
+                        'site_title' => $newsItem->site_title,
+                        'news_url' => $newsItem->news_url,
+                        'text' => $newsItem->text,
+                        'image' => $newsItem->image,
+                        ])
+                    @endforeach
+                @endif
+
             @endforeach
         @endif
 
         @if ($section['type'] == '1column')
                 
-        @endif --}}
+        @endif
 
         @if ($section['type'] == 'banner')
         @include('sections.banner', [
