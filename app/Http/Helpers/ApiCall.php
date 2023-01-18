@@ -3,7 +3,7 @@ namespace App\Http\Helpers;
 
 class ApiCall {
     public $id;
-    public $cmspath = 'https://new.rsmarine.eu/_mcfu638b-cms';
+    public $cmspath = 'https://rsmarine.wtgroup.nl/_mcfu638b-cms';
     public $endpoint;
     public $method = 'GET';
     public $payload;
