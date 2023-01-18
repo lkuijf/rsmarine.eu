@@ -237,8 +237,50 @@ class PagesController extends Controller
                 //     $s['img']['alt'] = str_replace(['-', '_'], ' ', pathinfo($img, PATHINFO_FILENAME));
                 // }
                 if($sec->_type == '1column') {
+                    if(isset($sec->fullwidth) && count($sec->fullwidth)) {
+                        $s['1column'] = array();
+                        foreach($sec->fullwidth as $fullWidthItem) {
+                            if($fullWidthItem->_type == 'afbeelding') {
+                                $fullWidthItem->img = $this->generateImageUrl($fullWidthItem->image);
+                                $fullWidthItem->alt = $this->generateImageAlt($fullWidthItem->image);
+                                unset($fullWidthItem->image);
+                            }
+                            if($fullWidthItem->_type == 'bestand') {
+                                $fullWidthItem->file = $this->generateImageUrl($fullWidthItem->file);
+                            }
+                            $s['1column'][] =  $fullWidthItem;
+                        }
+                    }
                 }
                 if($sec->_type == '2column') {
+                    $s['2column']['left'] = array();
+                    $s['2column']['right'] = array();
+                    if(isset($sec->left) && count($sec->left)) {
+                        foreach($sec->left as $leftItem) {
+                            if($leftItem->_type == 'afbeelding') {
+                                $leftItem->img = $this->generateImageUrl($leftItem->image);
+                                $leftItem->alt = $this->generateImageAlt($leftItem->image);
+                                unset($leftItem->image);
+                            }
+                            if($leftItem->_type == 'bestand') {
+                                $leftItem->file = $this->generateImageUrl($leftItem->file);
+                            }
+                            $s['2column']['left'][] = $leftItem;
+                        }
+                    }
+                    if(isset($sec->right) && count($sec->right)) {
+                        foreach($sec->right as $rightItem) {
+                            if($rightItem->_type == 'afbeelding') {
+                                $rightItem->img = $this->generateImageUrl($rightItem->image);
+                                $rightItem->alt = $this->generateImageAlt($rightItem->image);
+                                unset($rightItem->image);
+                            }
+                            if($rightItem->_type == 'bestand') {
+                                $rightItem->file = $this->generateImageUrl($rightItem->file);
+                            }
+                            $s['2column']['right'][] = $rightItem;
+                        }
+                    }
                 }
                 if($sec->_type == 'banner') {
                     // $s['wl_header'] = $sec->writing_letters_header;
@@ -565,7 +607,7 @@ class PagesController extends Controller
                 $sections[] = $s;
             }
         }
-// dd($sections);
+dd($sections);
         $res->pageMetaDescription = $metaDesc;
         $res->pageTitle = $hTitle;
         $res->contentSections = $sections;

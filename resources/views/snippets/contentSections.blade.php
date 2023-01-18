@@ -1,5 +1,18 @@
 @foreach ($data['content_sections'] as $section)
-    @if ($section['type'] == 'banner')
+
+        {{-- @if ($section['type'] == '1column')
+            @foreach ($section['1column'] as $data)
+                @if ($data['_type'] == 'tekst')
+                    
+                @endif
+            @endforeach
+        @endif
+
+        @if ($section['type'] == '1column')
+                
+        @endif --}}
+
+        @if ($section['type'] == 'banner')
         @include('sections.banner', [
             'image' => $section['img'], 
             'extraPadding' => $section['checked'],
