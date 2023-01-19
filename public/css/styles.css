@@ -486,7 +486,7 @@ footer {
 }
 footer > div {
   display: flex;
-  gap: 20px;
+  gap: 60px;
 }
 @media (max-width: 768px) {
   footer > div {
