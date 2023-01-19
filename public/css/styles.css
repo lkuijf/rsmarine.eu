@@ -119,44 +119,74 @@ img {
   vertical-align: middle;
 }
 
+@font-face {
+  font-family: "rsmarine";
+  src: url("../font/rsmarine.eot?54900878");
+  src: url("../font/rsmarine.eot?54900878#iefix") format("embedded-opentype"), url("../font/rsmarine.woff?54900878") format("woff"), url("../font/rsmarine.ttf?54900878") format("truetype"), url("../font/rsmarine.svg?54900878#rsmarine") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 .inner {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 60px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 @media (max-width: 1000px) {
   .inner {
-    padding: 0 30px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 @media (max-width: 768px) {
   .inner {
-    padding: 0 40px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
 @media (max-width: 480px) {
   .inner {
-    padding: 0 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 .inner > :first-child {
   margin-top: 0;
 }
 
+@-webkit-keyframes scale {
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes scale {
+  50% {
+    transform: scale(1.1);
+  }
+}
 .top {
   position: relative;
+  overflow: hidden;
 }
 .top.homepage > img {
-  height: 700px;
+  height: 600px;
+}
+@media (max-width: 1000px) {
+  .top.homepage > img {
+    height: 500px;
+  }
 }
 @media (max-width: 768px) {
   .top.homepage > img {
-    height: 600px;
+    height: 450px;
   }
 }
 @media (max-width: 480px) {
   .top.homepage > img {
-    height: 450px;
+    height: 400px;
   }
 }
 .top > img {
@@ -164,6 +194,8 @@ img {
   height: 250px;
   -o-object-fit: cover;
      object-fit: cover;
+  -webkit-animation: scale 40s linear infinite;
+          animation: scale 40s linear infinite;
 }
 .top .topInfo {
   position: absolute;
@@ -341,6 +373,10 @@ ul {
   padding: 10px;
   width: 100%;
 }
+.contentWrapper .inner {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 
 .fileWrap {
   display: flex;
@@ -371,8 +407,8 @@ ul {
 }
 
 .newsWrap {
-  padding: 10px;
-  margin: 10px 0;
+  padding: 20px;
+  margin: 20px 0;
   border: 1px solid #CCC;
 }
 .newsWrap .newsTitle {
@@ -462,7 +498,7 @@ ul {
     gap: 20px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .columns {
     flex-wrap: wrap;
   }
@@ -473,7 +509,7 @@ ul {
 .columns > div > :first-child {
   margin-top: 0;
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .columns > div {
     flex: 1 1 100%;
   }
@@ -500,4 +536,31 @@ footer > div > div {
   footer > div > div {
     flex: 1 1 100%;
   }
+}
+
+#toTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  right: 40px;
+  bottom: -80px;
+  z-index: 1;
+  cursor: default;
+  background-color: #1C355E;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #FFF;
+  transition: bottom 0.3s ease;
+}
+#toTop:before {
+  font-family: "rsmarine";
+  font-size: 40px;
+  color: #FFF;
+  content: "\e800";
+}
+#toTop.show {
+  bottom: 40px;
 }/*# sourceMappingURL=styles.css.map */

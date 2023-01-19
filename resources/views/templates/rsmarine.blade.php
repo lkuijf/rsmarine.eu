@@ -50,7 +50,10 @@
             <div>{!! $data['website_options']['footer_tekst'] !!}</div>
         </div>
     </footer>
+
+    <a href="" id="toTop"></a>
     
     @yield('before_closing_body_tag')
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>

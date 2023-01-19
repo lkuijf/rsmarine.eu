@@ -1,7 +1,7 @@
 @extends('templates.rsmarine')
 @section('content')
     @include('snippets.contentSections')
-    @include('snippets.contact-form')
+    <div class="inner">@include('snippets.contact-form')</div>
     @include('snippets.route')
 @endsection
 @section('after_body_tag')
