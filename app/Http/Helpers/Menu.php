@@ -15,13 +15,14 @@ class Menu {
         // foreach($this->allPagesFlattenedPerParent[$parentId] as $page) {
         for($x=0;$x<count($this->allPagesFlattenedPerParent[$parentId]);$x++) { // using for(), key can be an order integer
             $page = $this->allPagesFlattenedPerParent[$parentId][$x];
-            if($page->title == '[HOMEPAGE]') continue;
+            // if($page->title == '[HOMEPAGE]') continue;
             if($page->title == 'Algemene voorwaarden') continue;
             if($page->title == 'Antidiscriminatiebeleid') continue;
             if($page->title == 'Privacyverklaring') continue;
             if($page->title == 'Interviews') continue;
             if($page->title == 'FAQ') continue;
-            // if($page->title == '[HOMEPAGE]') $page->title = 'Home';
+            if($page->title == '[HOMEPAGE]') $page->title = 'Home';
+            
             $pageUrl = $url . '/' . $page->slug;
             $this->html .= '<li itemprop="name">';
             // if(substr_count($pageUrl, '/') == 2) {
@@ -29,6 +30,7 @@ class Menu {
             // } else {
                 $href = $pageUrl;
                 if(isset($page->alt_url) && $page->alt_url) $href = $page->alt_url; // mironmarine.nl
+                if($page->title == 'Home') $href = '/';
                 $this->html .= '<a itemprop="url" href="' . $href . '">';
                 // $this->html .= '<a itemprop="url" href="#' . substr($href, 1) . '">'; // rotterdamsehorecawandeling.nl (onepager)
             // }

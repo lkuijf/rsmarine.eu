@@ -1,0 +1,275 @@
+$screenBreakpoint: 768px; // iPads, Tablets
+$screenBreakpointMobile: 480px; // Mobile devices
+$contentWidth: 1000px; // max contentwidht .inner
+
+// $colorPink: #E64097; // original pink color
+// $colorPinkLight: #FDF0F7; // text background
+$colorBlack: #333; // text
+$colorGrey: #666; // hover
+$colorBlue: #1C355E; // blue in logo
+$colorBlueLight: #325fa8;
+$colorOrange: #F69A1D; // orange in logo
+// $colorGrey: #767676; // for text
+// $colorGreyLight: #f4f4f4; // grid cell background
+// $colorGold: #C3A572; // original color used in svg-logo
+// $colorGoldLight: #e1d2b8;
+
+$fontFamily: 'Libre Franklin', sans-serif;
+// $fontFamily: Arial, Verdana;
+// $fontFamily: 'Roboto', sans-serif;
+// $fontFamilyHeaders: 'EB Garamond', serif;
+// $fontFamilyHeaders: 'Playfair Display', serif;
+
+@import 'inc/burger-menu.adapter';
+@import 'inc/contact-form';
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+html {
+    box-sizing: border-box;
+    font-family: $fontFamily;
+    color: $colorBlack;
+    font-size: 16px;
+    // background-color: #DDD;
+    scroll-behavior: smooth;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+img {
+    vertical-align: middle; // removes bottom 3px margin.
+}
+
+.inner {
+    max-width: $contentWidth;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.top {
+    position: relative;
+    &.homepage > img {
+        height: 300px;
+    }
+    > img {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+    }
+    .topInfo {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(51,51,51,1));
+        > div {
+            padding-bottom: 10px;
+        }
+        .logoWrap {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            @media (max-width: $screenBreakpoint) {flex-wrap: wrap;}
+            p {
+                margin: 0;
+                padding: 0;
+                color: #FFF;
+                &:first-of-type {
+                    text-transform: uppercase;
+                    font-size: 38px;
+                    font-weight: bold;
+                    @media (max-width: $screenBreakpointMobile) {font-size: 28px;}
+                }
+                &:last-of-type {
+                    font-size: 18px;
+                    @media (max-width: $screenBreakpointMobile) {font-size: 14px;}
+                }
+            }
+        }
+    }
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.mainNav {
+    border-bottom: 1px solid #CCC;
+    #burger-check, .burger-label {
+        display: none;
+    }
+    @media (max-width: $screenBreakpoint) {
+        @include burgerMenuAdapter;
+        .burger-label {
+            width: 46px;
+            height: 46px;
+            top: 11px;
+            right: 11px;
+            padding-top: 8px;
+            background-color: #EFEFEF;
+        }
+        .burger-label span {
+            margin-bottom: 7px;
+            margin-left: 5px;
+            margin-right: 5px;
+            height: 5px;
+            background: #000;
+            border: 1px solid #000;
+        }
+    
+        #burger-check ~ ul {
+            background-color: $colorBlue;
+            top: 64px;
+            li {
+                a {
+                    display: block;
+                    color: #FFF;
+                    line-height: 40px;
+                    padding-left: 20px;
+                    width: 100%;
+                    text-decoration: none;
+                    &:hover {
+                        background-color: $colorBlueLight;
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: $screenBreakpoint + 1) {
+        ul {
+            display: flex;
+            gap: 40px;
+            li {
+                a {
+                    color: $colorBlack;
+                    display: block;
+                    line-height: 70px;
+                    text-decoration: none;
+                    font-weight: bold;
+                    &:hover {
+                        color: $colorGrey;
+                    }
+                }
+            }
+        }
+    }
+}
+.contentWrapper {
+    img {
+        border: 2px solid #CCC;
+        padding: 10px;
+        width: 100%;
+    }
+}
+
+.fileWrap {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    max-width: 600px;
+    margin: 10px auto;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #CCC;
+    div {
+        &.fileTitle {
+            width: 100%;
+        }
+        &.fileButton {
+            width: 120px;
+            a {
+                background-color: $colorBlue;
+                color: #FFF;
+                font-weight: bold;
+                display: block;
+                text-decoration: none;
+                padding: 10px 15px;
+                border: 1px solid #000;
+                &:hover {
+                    background-color: $colorBlueLight;
+                }
+            }
+        }
+    }
+}
+.newsWrap {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #CCC;
+    .newsTitle {
+        padding-bottom: 10px;
+        h3 {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+        }
+        a {
+            text-decoration: none;
+            color: $colorOrange;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    img {
+        border: 0;
+        padding: 0;
+    }
+    .newsInner {
+        display: flex;
+        gap: 10px;
+        @media (max-width: $screenBreakpointMobile) {flex-wrap: wrap;}
+        .newsImage {
+            width: 33%;
+            @media (max-width: $screenBreakpointMobile) {width: auto;}
+        }
+        .newsText{
+            color: $colorGrey;
+            font-size: 0.9em;
+            width: 67%;
+            @media (max-width: $screenBreakpointMobile) {width: auto;}
+            > * {
+                margin-top: 0;
+            }
+        }
+    }
+    .newsText{
+        color: $colorGrey;
+        font-size: 0.9em;
+    }
+    .newsSite {
+        text-align: right;
+        padding-top: 5px;
+        a {
+            font-weight: bold;
+            font-style: italic;
+            color: $colorBlack;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+.columns {
+    display: flex;
+    gap: 20px;
+    @media (max-width: $screenBreakpointMobile) {flex-wrap: wrap;}
+    > div {
+        flex: 1 1 50%;
+        @media (max-width: $screenBreakpointMobile) {flex: 1 1 100%;}
+    }
+}
+footer {
+    padding: 50px 0 100px 0;
+    background-color: #000;
+    color: #FFF;
+    > div {
+        display: flex;
+        gap: 20px;
+        @media (max-width: $screenBreakpoint) {flex-wrap: wrap;}
+        > div {
+            flex: 1 1 50%;
+            @media (max-width: $screenBreakpoint) {flex: 1 1 100%;}
+        }
+    }
+}

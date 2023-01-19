@@ -2,26 +2,24 @@
 
         @if ($section['type'] == '1column')
             @foreach ($section['1column'] as $secData)
+
                 @if ($secData->_type == 'tekst')
                     @include('sections.text', [
                     'text' => $secData->text,
                     ])
                 @endif
-
                 @if ($secData->_type == 'afbeelding')
                     @include('sections.afbeelding', [
                     'imgUrl' => $secData->img,
                     'imgAlt' => $secData->alt,
                     ])
                 @endif
-
                 @if ($secData->_type == 'bestand')
                     @include('sections.bestand', [
                     'file' => $secData->file,
                     'title' => $secData->title,
                     ])
                 @endif
-
                 @if ($secData->_type == 'nieuws-items')
                     @foreach ($secData->news_associations as $newsItem)
                         @include('sections.news', [
@@ -37,9 +35,88 @@
             @endforeach
         @endif
 
-        @if ($section['type'] == '1column')
-                
+        @if ($section['type'] == '2column')
+            <div class="inner">
+            <div class="columns">
+                <div>
+                    @foreach ($section['2column']['left'] as $secData)
+            
+                    @if ($secData->_type == 'tekst')
+                        @include('sections.2column_text', [
+                        'text' => $secData->text,
+                        ])
+                    @endif
+                    @if ($secData->_type == 'afbeelding')
+                        @include('sections.2column_afbeelding', [
+                        'imgUrl' => $secData->img,
+                        'imgAlt' => $secData->alt,
+                        ])
+                    @endif
+                    @if ($secData->_type == 'bestand')
+                        @include('sections.2column_bestand', [
+                        'file' => $secData->file,
+                        'title' => $secData->title,
+                        ])
+                    @endif
+                    @if ($secData->_type == 'nieuws-items')
+                        @foreach ($secData->news_associations as $newsItem)
+                            @include('sections.2column_news', [
+                            'title' => $newsItem->title,
+                            'site_title' => $newsItem->site_title,
+                            'news_url' => $newsItem->news_url,
+                            'text' => $newsItem->text,
+                            'image' => $newsItem->image,
+                            ])
+                        @endforeach
+                    @endif
+
+
+                    @endforeach
+                </div>
+                <div>
+                    @foreach ($section['2column']['right'] as $secData)
+
+                                
+                    @if ($secData->_type == 'tekst')
+                        @include('sections.2column_text', [
+                        'text' => $secData->text,
+                        ])
+                    @endif
+                    @if ($secData->_type == 'afbeelding')
+                        @include('sections.2column_afbeelding', [
+                        'imgUrl' => $secData->img,
+                        'imgAlt' => $secData->alt,
+                        ])
+                    @endif
+                    @if ($secData->_type == 'bestand')
+                        @include('sections.2column_bestand', [
+                        'file' => $secData->file,
+                        'title' => $secData->title,
+                        ])
+                    @endif
+                    @if ($secData->_type == 'nieuws-items')
+                        @foreach ($secData->news_associations as $newsItem)
+                            @include('sections.2column_news', [
+                            'title' => $newsItem->title,
+                            'site_title' => $newsItem->site_title,
+                            'news_url' => $newsItem->news_url,
+                            'text' => $newsItem->text,
+                            'image' => $newsItem->image,
+                            ])
+                        @endforeach
+                    @endif
+
+
+                    @endforeach
+                </div>
+            </div>
+            </div>
         @endif
+
+
+
+
+
 
         @if ($section['type'] == 'banner')
         @include('sections.banner', [
