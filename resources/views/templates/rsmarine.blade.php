@@ -46,7 +46,7 @@
     
     <footer>
         <div class="inner">
-            <div>&copy; Copyright {{ date('Y') }} RS Marine Shipmanagement Ltd</div>
+            <div><p>&copy; Copyright {{ date('Y') }} RS Marine Shipmanagement Ltd</p></div>
             <div>{!! $data['website_options']['footer_tekst'] !!}</div>
         </div>
     </footer>
