@@ -38,14 +38,14 @@ class SubmitController extends Controller
         // $to_email = 'frans@tamatta.org, rense@tamatta.org';
         // $subject = 'Ingevuld contactformulier vanaf rsmarine.eu';
         $subjectCompany = 'Ingevuld contactformulier vanaf rsmarine.eu';
-        $subjectVisitor = 'Kopie van uw bericht aan rsmarine.eu';
+        $subjectVisitor = 'Copy of your message to rsmarine.eu';
         
         $messages = $this->getHtmlEmails($request->all(), 'https://rsmarine.wtgroup.nl/statics/email/logo.jpg', 'De volgende gegevens zijn achtergelaten door de bezoeker.', 'Thanks for your message. We received the following information:');
 
         $headers = array(
             "MIME-Version: 1.0",
             "Content-Type: text/html; charset=ISO-8859-1",
-            "From: RS Marine <contactformulier@rsmarine.eu>",
+            "From: RS Marine <contactform@rsmarine.eu>",
             "Reply-To: info@rsmarine.eu",
             // "X-Priority: 1",
         );
