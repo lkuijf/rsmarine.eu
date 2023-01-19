@@ -59,7 +59,7 @@ img {
     }
     > img {
         width: 100%;
-        height: 200px;
+        height: 250px;
         object-fit: cover;
     }
     .topInfo {
@@ -83,6 +83,7 @@ img {
                     text-transform: uppercase;
                     font-size: 38px;
                     font-weight: bold;
+                    @media (max-width: $screenBreakpoint) {font-size: 34px;}
                     @media (max-width: $screenBreakpointMobile) {font-size: 28px;}
                 }
                 &:last-of-type {
