@@ -40,7 +40,7 @@ class SubmitController extends Controller
         $subjectCompany = 'Ingevuld contactformulier vanaf rsmarine.eu';
         $subjectVisitor = 'Kopie van uw bericht aan rsmarine.eu';
         
-        $messages = $this->getHtmlEmails($request->all(), 'https://rsmarine.wtgroup.nl/statics/email/logo.jpg', 'De volgende gegevens zijn achtergelaten door de bezoeker.', 'Bedankt voor uw reactie. De volgende informatie hebben wij ontvangen:');
+        $messages = $this->getHtmlEmails($request->all(), 'https://rsmarine.wtgroup.nl/statics/email/logo.jpg', 'De volgende gegevens zijn achtergelaten door de bezoeker.', 'Thanks for your message. We received the following information:');
 
         $headers = array(
             "MIME-Version: 1.0",
