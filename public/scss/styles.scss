@@ -1,6 +1,7 @@
 $screenBreakpoint: 768px; // iPads, Tablets
 $screenBreakpointMobile: 480px; // Mobile devices
-$contentWidth: 1000px; // max contentwidht .inner
+$screenBreakpointExtra: 1000px; // Extra breakpoint to fit some elements
+$contentWidth: 1200px; // max contentwidht .inner
 
 // $colorPink: #E64097; // original pink color
 // $colorPinkLight: #FDF0F7; // text background
@@ -45,7 +46,10 @@ img {
 .inner {
     max-width: $contentWidth;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 60px;
+    @media (max-width: $screenBreakpointExtra) {padding: 0 30px;}
+    @media (max-width: $screenBreakpoint) {padding: 0 40px;}
+    @media (max-width: $screenBreakpointMobile) {padding: 0 20px;}
     > :first-child {
         margin-top: 0;
     }
@@ -145,7 +149,9 @@ ul {
         ul {
             display: flex;
             gap: 40px;
+            @media (max-width: $screenBreakpointExtra) {gap:20px;}
             li {
+                flex: 0 0 auto;
                 a {
                     color: $colorBlack;
                     display: block;
@@ -259,7 +265,10 @@ ul {
 }
 .columns {
     display: flex;
-    gap: 20px;
+    gap: 60px;
+    @media (max-width: $screenBreakpointExtra) {gap: 50px;}
+    @media (max-width: $screenBreakpoint) {gap: 40px;}
+    @media (max-width: $screenBreakpointMobile) {gap: 20px;}
     margin: 10px 0;
     @media (max-width: $screenBreakpointMobile) {flex-wrap: wrap;}
     > div {
