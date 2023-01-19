@@ -420,6 +420,7 @@ ul {
 .columns {
   display: flex;
   gap: 20px;
+  margin: 10px 0;
 }
 @media (max-width: 480px) {
   .columns {

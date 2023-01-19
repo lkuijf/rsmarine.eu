@@ -260,6 +260,7 @@ ul {
 .columns {
     display: flex;
     gap: 20px;
+    margin: 10px 0;
     @media (max-width: $screenBreakpointMobile) {flex-wrap: wrap;}
     > div {
         flex: 1 1 50%;
