@@ -45,7 +45,7 @@ class SubmitController extends Controller
         $headers = array(
             "MIME-Version: 1.0",
             "Content-Type: text/html; charset=ISO-8859-1",
-            "From: Best Flex <contactformulier@rsmarine.eu>",
+            "From: RS Marine <contactformulier@rsmarine.eu>",
             "Reply-To: info@rsmarine.eu",
             // "X-Priority: 1",
         );
@@ -89,14 +89,14 @@ class SubmitController extends Controller
         // $to_email = 'frans@tamatta.org, rense@tamatta.org';
         // $subject = 'Ingevuld contactformulier vanaf rsmarine.eu';
         $subjectCompany = 'Sollicitatie vanaf rsmarine.eu';
-        $subjectVisitor = 'Kopie van je sollicitatie aan Best Flex';
+        $subjectVisitor = 'Kopie van je sollicitatie aan RS Marine';
         
         $messages = $this->getHtmlEmails($request->all(), 'https://rsmarine.wtgroup.nl/statics/email/logo.jpg', 'De volgende gegevens zijn achtergelaten door de bezoeker.', 'Bedankt voor je sollicitatie. De volgende informatie hebben wij ontvangen:');
 
         $headers = array(
             "MIME-Version: 1.0",
             "Content-Type: text/html; charset=ISO-8859-1",
-            "From: Best Flex <sollicitatieformulier@rsmarine.eu>",
+            "From: RS Marine <sollicitatieformulier@rsmarine.eu>",
             "Reply-To: info@rsmarine.eu",
             // "X-Priority: 1",
         );
