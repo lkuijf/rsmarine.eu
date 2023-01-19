@@ -57,6 +57,9 @@ class PagesController extends Controller
         $content = $this->getContent($pageId);
         $options = $this->getWebsiteOptions();
 
+        if(isset($options['header_image'])) $options['header_image'] = $this->generateImageUrl($options['header_image']);
+        
+// dd($options);
         // $cartTotalItems = ShopController::getTotalCartItems();
         // $loggedInUserId = ShopController::getLoggedinUser();
 // dd($content->contentSections);

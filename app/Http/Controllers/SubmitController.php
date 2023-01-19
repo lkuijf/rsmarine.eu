@@ -15,10 +15,10 @@ class SubmitController extends Controller
             'Bericht' => 'required',
         );
         $validationMessages = array(
-            'Naam.required'=> 'Geef a.u.b. een naam op.',
-            'E-mail_adres.required'=> 'Geef a.u.b. een e-mail adres op.',
-            'E-mail_adres.email'=> 'Het e-mail adres is niet juist geformuleerd.',
-            'Bericht.required'=> 'Vul een bericht in.',
+            'Naam.required'=> 'Please provide a name',
+            'E-mail_adres.required'=> 'Please provide an e-mail address',
+            'E-mail_adres.email'=> 'The e-mail address is not correctly formed',
+            'Bericht.required'=> 'Please fill in a message',
         );
         /***********************************************************************************
             Gebruik maken van manually created validator ($validated = $request->validate($toValidate,$validationMessages)
@@ -36,17 +36,17 @@ class SubmitController extends Controller
 
         $to_email = 'leon@wtmedia-events.nl';
         // $to_email = 'frans@tamatta.org, rense@tamatta.org';
-        // $subject = 'Ingevuld contactformulier vanaf bestflex.nl';
-        $subjectCompany = 'Ingevuld contactformulier vanaf bestflex.nl';
-        $subjectVisitor = 'Kopie van uw bericht aan bestflex.nl';
+        // $subject = 'Ingevuld contactformulier vanaf rsmarine.eu';
+        $subjectCompany = 'Ingevuld contactformulier vanaf rsmarine.eu';
+        $subjectVisitor = 'Kopie van uw bericht aan rsmarine.eu';
         
-        $messages = $this->getHtmlEmails($request->all(), 'https://bestflex.nl/statics/email/logo.png', 'De volgende gegevens zijn achtergelaten door de bezoeker.', 'Bedankt voor uw reactie. De volgende informatie hebben wij ontvangen:');
+        $messages = $this->getHtmlEmails($request->all(), 'https://rsmarine.wtgroup.nl/statics/email/logo.jpg', 'De volgende gegevens zijn achtergelaten door de bezoeker.', 'Bedankt voor uw reactie. De volgende informatie hebben wij ontvangen:');
 
         $headers = array(
             "MIME-Version: 1.0",
             "Content-Type: text/html; charset=ISO-8859-1",
-            "From: Best Flex <contactformulier@bestflex.nl>",
-            "Reply-To: info@bestflex.nl",
+            "From: Best Flex <contactformulier@rsmarine.eu>",
+            "Reply-To: info@rsmarine.eu",
             // "X-Priority: 1",
         );
         $headers = implode("\r\n", $headers);
@@ -87,17 +87,17 @@ class SubmitController extends Controller
 
         $to_email = 'leon@wtmedia-events.nl';
         // $to_email = 'frans@tamatta.org, rense@tamatta.org';
-        // $subject = 'Ingevuld contactformulier vanaf bestflex.nl';
-        $subjectCompany = 'Sollicitatie vanaf bestflex.nl';
+        // $subject = 'Ingevuld contactformulier vanaf rsmarine.eu';
+        $subjectCompany = 'Sollicitatie vanaf rsmarine.eu';
         $subjectVisitor = 'Kopie van je sollicitatie aan Best Flex';
         
-        $messages = $this->getHtmlEmails($request->all(), 'https://bestflex.nl/statics/email/logo.png', 'De volgende gegevens zijn achtergelaten door de bezoeker.', 'Bedankt voor je sollicitatie. De volgende informatie hebben wij ontvangen:');
+        $messages = $this->getHtmlEmails($request->all(), 'https://rsmarine.wtgroup.nl/statics/email/logo.jpg', 'De volgende gegevens zijn achtergelaten door de bezoeker.', 'Bedankt voor je sollicitatie. De volgende informatie hebben wij ontvangen:');
 
         $headers = array(
             "MIME-Version: 1.0",
             "Content-Type: text/html; charset=ISO-8859-1",
-            "From: Best Flex <sollicitatieformulier@bestflex.nl>",
-            "Reply-To: info@bestflex.nl",
+            "From: Best Flex <sollicitatieformulier@rsmarine.eu>",
+            "Reply-To: info@rsmarine.eu",
             // "X-Priority: 1",
         );
         $headers = implode("\r\n", $headers);

@@ -19,8 +19,9 @@ use App\Http\Controllers\SubmitController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', [PagesController::class, 'showPage'])->defaults('section', 'homepage')->defaults('page', false)->defaults('subpage', false);
+Route::get('/', [PagesController::class, 'showPage'])->defaults('section', 'homepage')->defaults('page', false)->defaults('subpage', false)->name('home');
 
+Route::post('/submit-contact-form', [SubmitController::class, 'submitContactForm']);
 
 /* Than check for a page request */
 Route::get('/{section}', [PagesController::class, 'showPage'])->defaults('page', false)->defaults('subpage', false)->where([

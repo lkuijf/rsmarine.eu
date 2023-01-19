@@ -12,15 +12,15 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 <body>
-
-    <div class="top homepage">
-        <img src="{{ asset('statics/header.jpg') }}" alt="">
+    @yield('after_body_tag')
+    <div class="top @if(Route::currentRouteName() == 'home'){{ 'homepage' }}@endif">
+        <img src="{{ $data['website_options']['header_image'] }}" alt="">
         <div class="topInfo">
             <div class="inner">
                 <div class="logoWrap">
                     <div>
-                        <p>RS Marine Shipmanagement LTD</p>
-                        <p>Connecting seafarers, vessel and Shipowner</p>
+                        <p>{{ $data['website_options']['header_title'] }}</p>
+                        <p>{{ $data['website_options']['header_sub'] }}</p>
                     </div>
                     <div><img src="{{ asset('statics/rs-marine-logo.jpg') }}" alt="RS Marine - Logo"></div>
                 </div>
@@ -47,9 +47,10 @@
     <footer>
         <div class="inner">
             <div>&copy; Copyright {{ date('Y') }} RS Marine Shipmanagement Ltd</div>
-            <div>Connecting seafarers, vessel and Shipowner Connecting seafarers, vessel and Shipowner Connecting seafarers, vessel and Shipowner Connecting seafarers, vessel and Shipowner</div>
+            <div>{!! $data['website_options']['footer_tekst'] !!}</div>
         </div>
     </footer>
     
+    @yield('before_closing_body_tag')
 </body>
 </html>
