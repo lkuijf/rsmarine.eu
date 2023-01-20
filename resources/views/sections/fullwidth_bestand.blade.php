@@ -1,3 +1,3 @@
-<div class="inner">
+<div class="inner fadeOut">
     @include('sections.bestand')
 </div>
