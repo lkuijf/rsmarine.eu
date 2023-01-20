@@ -41,8 +41,9 @@
     }
     button {
         cursor: pointer;
-        background-color: $colorGrey;
-        color: #FFF;
+        padding: 10px 40px;
+        background-color: $colorOrange;
+        color: #000;
         font-weight: bold;
         border: 2px solid $colorBlack;
         -webkit-box-shadow: 1px 1px 0px 0px #666, 2px 2px 0px 0px #666;
