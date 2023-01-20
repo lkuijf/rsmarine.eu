@@ -1,3 +1,1 @@
-<div class="inner">
-    <img src="{!! $imgUrl !!}" alt="{{ $imgAlt }}">
-</div>
+<img src="{!! $imgUrl !!}" alt="{{ $imgAlt }}">

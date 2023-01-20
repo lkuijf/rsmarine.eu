@@ -1,1 +1,1 @@
-<img src="{!! $imgUrl !!}" alt="{{ $imgAlt }}">
+@include('sections.afbeelding')

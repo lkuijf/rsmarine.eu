@@ -1,3 +1,1 @@
-<div class="inner">
-    {!! $text !!}
-</div>
+{!! $text !!}
