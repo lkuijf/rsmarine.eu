@@ -24,7 +24,7 @@ Route::get('/', [PagesController::class, 'showPage'])->defaults('section', 'home
 
 Route::post('/submit-contact-form', [SubmitController::class, 'submitContactForm']);
 
-// Route::get('/media/{year}/{month}/{file}', [ImageController::class, 'renderImage']);
+Route::get('/media/{year}/{month}/{file}', [ImageController::class, 'renderImage']);
 
 /* Than check for a page request */
 Route::get('/{section}', [PagesController::class, 'showPage'])->defaults('page', false)->defaults('subpage', false)->where([
