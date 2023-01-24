@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\SubmitController;
+use App\Http\Controllers\ImageController;
 // use App\Http\Controllers\AjaxController;
 
 /*
@@ -22,6 +23,8 @@ use App\Http\Controllers\SubmitController;
 Route::get('/', [PagesController::class, 'showPage'])->defaults('section', 'homepage')->defaults('page', false)->defaults('subpage', false)->name('home');
 
 Route::post('/submit-contact-form', [SubmitController::class, 'submitContactForm']);
+
+Route::get('/media/{year}/{month}/{file}', [ImageController::class, 'renderImage']);
 
 /* Than check for a page request */
 Route::get('/{section}', [PagesController::class, 'showPage'])->defaults('page', false)->defaults('subpage', false)->where([
