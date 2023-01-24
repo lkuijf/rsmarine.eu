@@ -27,9 +27,10 @@ Route::post('/submit-contact-form', [SubmitController::class, 'submitContactForm
 
 Route::get('/media/{year}/{month}/{file}', [ImageController::class, 'renderImage']);
 //https://rsmarine.wtgroup.nl/_mcfu638b-cms/wp-json/carbon-fields/v1/attachment?type=id&value=444
-Route::get('/_mcfu638b-cms/wp-json/carbon-fields/v1/attachment', function () {
+Route::get('/_mcfu638b-cms/wp-json/carbon-fields/v1/attachment', function (Request $request) {
     // return view('welcome');
-    echo '=> /_mcfu638b-cms/index.php/wp-json/carbon-fields/v1/attachment';
+    $urlWithQueryString = $request->fullUrl();
+    echo '=> /_mcfu638b-cms/index.php/wp-json/carbon-fields/v1/attachment' . $urlWithQueryString;
 });
 
 
