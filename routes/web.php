@@ -24,7 +24,15 @@ Route::get('/', [PagesController::class, 'showPage'])->defaults('section', 'home
 
 Route::post('/submit-contact-form', [SubmitController::class, 'submitContactForm']);
 
+
 Route::get('/media/{year}/{month}/{file}', [ImageController::class, 'renderImage']);
+//https://rsmarine.wtgroup.nl/_mcfu638b-cms/wp-json/carbon-fields/v1/attachment?type=id&value=444
+Route::get('/_mcfu638b-cms/wp-json/carbon-fields/v1/attachment', function () {
+    // return view('welcome');
+    echo '=> /_mcfu638b-cms/index.php/wp-json/carbon-fields/v1/attachment';
+});
+
+
 
 /* Than check for a page request */
 Route::get('/{section}', [PagesController::class, 'showPage'])->defaults('page', false)->defaults('subpage', false)->where([
