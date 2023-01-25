@@ -24,6 +24,8 @@ use App\Http\Controllers\ImageController;
     Route::get('/_mcfu638b-cms/wp-json/carbon-fields/v1/attachment', function () {
         return redirect(str_replace('/_mcfu638b-cms/wp-json/carbon-fields/v1/attachment', '/_mcfu638b-cms/index.php/wp-json/carbon-fields/v1/attachment', Request::fullUrl()));
     });
+    // Moved web.config /admin to wp-cms redirect to this route (since Laravel toolkit, and others, for Plesk messes web.config up)
+    Route::get('/admin', function () {return redirect('/_mcfu638b-cms/wp-admin');});
 /*********************/
 
 // Route::get('/', function () {
