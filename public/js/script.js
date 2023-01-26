@@ -17,7 +17,6 @@ window.addEventListener('scroll', (e) => {
 /* Fade in elements when in viewport */
 const observerOptions = {
     root: null,
-    rootMargin: "0px",
     threshold: 0.2
 };
 
@@ -33,8 +32,6 @@ function observerCallback(entries, observer) {
 }
 
 const observer = new IntersectionObserver(observerCallback, observerOptions);
-
 const fadeElms = document.querySelectorAll('.contentWrapper .inner');
-console.log(fadeElms.length);
 fadeElms.forEach(el => observer.observe(el));
 /*******/

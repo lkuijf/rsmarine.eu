@@ -203,12 +203,16 @@ ul {
     .inner {
         padding-top: 20px;
         padding-bottom: 20px;
-        transition: opacity 0.7s ease-in;
+        transition: opacity 0.7s ease-in, transform 0.7s ease-out;
         opacity: 0;
+        transform: translateY(50px);
     }
 }
 // .fadeOut { opacity: 0; }
-.fadeIn {opacity: 1 !important;}
+.fadeIn {
+    opacity: 1 !important;
+    transform: translateY(0px) !important;
+}
 
 .fileWrap {
     display: flex;
