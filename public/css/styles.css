@@ -327,6 +327,7 @@ ul {
     top: 64px;
     border-top: 2px solid #333;
     border-bottom: 2px solid #333;
+    z-index: 1;
   }
   .mainNav #burger-check ~ ul li a {
     display: block;

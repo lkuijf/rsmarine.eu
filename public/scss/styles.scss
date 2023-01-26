@@ -161,6 +161,7 @@ ul {
             top: 64px;
             border-top: 2px solid $colorBlack;
             border-bottom: 2px solid $colorBlack;
+            z-index: 1;
             li {
                 a {
                     display: block;
