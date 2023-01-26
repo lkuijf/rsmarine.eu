@@ -3,7 +3,6 @@ namespace App\Http\Helpers;
 
 class ApiCall {
     public $id;
-    public $cmspath = 'https://rsmarine.wtgroup.nl/_mcfu638b-cms';
     public $endpoint;
     public $method = 'GET';
     public $payload;
@@ -20,8 +19,8 @@ class ApiCall {
         $params = '';
         if($this->parameters) $params = '?' . http_build_query($this->parameters);
 
-// echo "\n" . '['.$this->cmspath . $this->endpoint . $params.']' . "<br />\n";
-        curl_setopt($curl, CURLOPT_URL, $this->cmspath . $this->endpoint . $params);
+// echo "\n" . '[' . config('app_wt.cmsPath') . $this->endpoint . $params.']' . "<br />\n";
+        curl_setopt($curl, CURLOPT_URL, config('app_wt.cmsPath') . $this->endpoint . $params);
         if($this->method == 'POST') {
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $this->payload);

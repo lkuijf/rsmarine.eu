@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\SubmitController;
 use App\Http\Controllers\ImageController;
-// use App\Http\Controllers\AjaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +15,11 @@ use App\Http\Controllers\ImageController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-/*********************/
-    // Moved web.config rewrite for media to this route (since Laravel toolkit, and others, for Plesk messes web.config up)
-    Route::get('/media/{year}/{month}/{file}', [ImageController::class, 'renderImage'])->where(['year' => '[0-9]{4}','month' => '[0-9]{2}']);
-    // Moved web.config rewrite for Carbon Fields -bug to this route (since Laravel toolkit, and others, for Plesk messes web.config up)
-    Route::get('/_mcfu638b-cms/wp-json/carbon-fields/v1/attachment', function () {
-        return redirect(str_replace('/_mcfu638b-cms/wp-json/carbon-fields/v1/attachment', '/_mcfu638b-cms/index.php/wp-json/carbon-fields/v1/attachment', Request::fullUrl()));
-    });
-    // Moved web.config /admin to wp-cms redirect to this route (since Laravel toolkit, and others, for Plesk messes web.config up)
-    Route::get('/admin', function () {return redirect('/_mcfu638b-cms/wp-admin');});
-/*********************/
-
+/*** Moved some web.config rewrites/redirects to these routes. Since Laravel toolkit, and others, for Plesk messes web.config up) ******************/
+    Route::get('/media/{year}/{month}/{file}', [ImageController::class, 'renderImage'])->where(['year' => '[0-9]{4}','month' => '[0-9]{2}']); // rewrite for media
+    Route::get('/_mcfu638b-cms/wp-json/carbon-fields/v1/attachment', function () {return redirect(str_replace('/_mcfu638b-cms/wp-json/carbon-fields/v1/attachment', '/_mcfu638b-cms/index.php/wp-json/carbon-fields/v1/attachment', Request::fullUrl()));}); // redirect for Carbon Fields -bug
+    Route::get('/admin', function () {return redirect('/_mcfu638b-cms/wp-admin');}); // redirect /admin to wp-cms
+/***************************************************************************************************************************************************/
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -35,7 +27,7 @@ Route::get('/', [PagesController::class, 'showPage'])->defaults('section', 'home
 Route::post('/submit-contact-form', [SubmitController::class, 'submitContactForm']);
 
 
-/* Than check for a page request */
+/* Check for a page request */
 Route::get('/{section}', [PagesController::class, 'showPage'])->defaults('page', false)->defaults('subpage', false)->where([
     'section' => '[a-z0-9_-]+',
 ]);
