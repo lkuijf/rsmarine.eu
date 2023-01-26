@@ -9,6 +9,7 @@ $colorBlack: #333; // text
 $colorGrey: #666; // hover
 $colorBlue: #1C355E; // blue in logo
 $colorBlueLight: #325fa8;
+$colorBlueLighter: #b4c8e8;
 $colorOrange: #F69A1D; // orange in logo
 // $colorGrey: #767676; // for text
 // $colorGreyLight: #f4f4f4; // grid cell background
@@ -143,20 +144,23 @@ ul {
             top: 11px;
             right: 11px;
             padding-top: 8px;
-            background-color: #EFEFEF;
+            background-color: $colorBlueLighter;
+            // background-color: #FFF;
+            // opacity: 0.5;
         }
         .burger-label span {
-            margin-bottom: 7px;
-            margin-left: 5px;
-            margin-right: 5px;
+            margin-left: 6px;
+            margin-right: 6px;
             height: 5px;
-            background: #000;
-            border: 1px solid #000;
+            background: $colorBlue;
+            border: 1px solid $colorBlue;
         }
-    
+            
         #burger-check ~ ul {
             background-color: $colorBlue;
             top: 64px;
+            border-top: 2px solid $colorBlack;
+            border-bottom: 2px solid $colorBlack;
             li {
                 a {
                     display: block;
@@ -167,10 +171,14 @@ ul {
                     text-decoration: none;
                     &:hover {
                         background-color: $colorBlueLight;
+                        // color: $colorBlack;
                     }
                 }
             }
         }
+        #burger-check:checked ~ ul {
+            border-left: 2px solid $colorBlack;
+       }
     }
     @media (min-width: $screenBreakpoint + 1) {
         ul {

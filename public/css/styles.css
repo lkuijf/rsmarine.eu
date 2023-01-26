@@ -313,19 +313,20 @@ ul {
     top: 11px;
     right: 11px;
     padding-top: 8px;
-    background-color: #EFEFEF;
+    background-color: #b4c8e8;
   }
   .mainNav .burger-label span {
-    margin-bottom: 7px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 6px;
+    margin-right: 6px;
     height: 5px;
-    background: #000;
-    border: 1px solid #000;
+    background: #1C355E;
+    border: 1px solid #1C355E;
   }
   .mainNav #burger-check ~ ul {
     background-color: #1C355E;
     top: 64px;
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
   }
   .mainNav #burger-check ~ ul li a {
     display: block;
@@ -337,6 +338,9 @@ ul {
   }
   .mainNav #burger-check ~ ul li a:hover {
     background-color: #325fa8;
+  }
+  .mainNav #burger-check:checked ~ ul {
+    border-left: 2px solid #333;
   }
 }
 @media (min-width: 769px) {
