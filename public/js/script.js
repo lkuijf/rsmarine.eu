@@ -1,4 +1,4 @@
-/***** To Top Button *****/
+/***** To Top Button *************************/
 const toTopBtn = document.querySelector('#toTop');
 toTopBtn.addEventListener('click', (e) => {
     e.preventDefault();
