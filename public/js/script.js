@@ -13,7 +13,7 @@ window.addEventListener('scroll', (e) => {
     else toTopBtn.classList.remove('show');
 });
 /*********************************************/
-
+/**/
 /***** Fade in elements when in viewport *****/
 // Beware of user has disabled JS; do not hide elements using CSS
 const fadeElms = document.querySelectorAll('.contentWrapper .inner');
