@@ -52,8 +52,8 @@
   background-color: #F69A1D;
   color: #000;
   font-weight: bold;
-  border: 2px solid #333;
-  box-shadow: 1px 1px 0px 0px #666, 2px 2px 0px 0px #666;
+  border: 1px solid #333;
+  box-shadow: 1px 1px 0px 0px #999, 2px 2px 0px 0px #999;
 }
 .contactForm button:active {
   box-shadow: none;
