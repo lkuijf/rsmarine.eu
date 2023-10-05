@@ -1,0 +1,28 @@
+{
+  "resources/font/rsmarine.eot": {
+    "file": "assets/rsmarine-6803a1c6.eot",
+    "src": "resources/font/rsmarine.eot"
+  },
+  "resources/font/rsmarine.svg": {
+    "file": "assets/rsmarine-8f949d82.svg",
+    "src": "resources/font/rsmarine.svg"
+  },
+  "resources/font/rsmarine.ttf": {
+    "file": "assets/rsmarine-a6988ca4.ttf",
+    "src": "resources/font/rsmarine.ttf"
+  },
+  "resources/font/rsmarine.woff": {
+    "file": "assets/rsmarine-40adcb18.woff",
+    "src": "resources/font/rsmarine.woff"
+  },
+  "resources/js/script.js": {
+    "file": "assets/script-75d8e966.js",
+    "isEntry": true,
+    "src": "resources/js/script.js"
+  },
+  "resources/scss/styles.scss": {
+    "file": "assets/styles-fb67ebf6.css",
+    "isEntry": true,
+    "src": "resources/scss/styles.scss"
+  }
+}
